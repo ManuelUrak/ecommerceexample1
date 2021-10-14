@@ -150,6 +150,46 @@
         </div>
     </div>
 
+    <div id="advantages">
+        <div class="container">
+            <div class="same-height-row">
+                <div class="col-sm-4">
+                    <div class="box same-height">
+                        <div class="icon">
+                            <i class="fa fa-heart"></i>
+                        </div>
+                        <h3>
+                            <a href="#">We Love Our Costumers</a>
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut vel quo ex recusandae, cumque distinctio debitis! Suscipit laborum unde, quam libero deserunt cumque deleniti quisquam aperiam nobis voluptate ut consequatur.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="box same-height">
+                        <div class="icon">
+                            <i class="fa fa-tag"></i>
+                        </div>
+                        <h3>
+                            <a href="#">Best Offers</a>
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto repellat voluptates dicta, modi omnis repudiandae harum exercitationem. Fugit, recusandae, suscipit ullam et nesciunt illo odit velit, illum laudantium fuga!</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="box same-height">
+                        <div class="icon">
+                            <i class="fa fa-thumbs-up"></i>
+                        </div>
+                        <h3>
+                            <a href="#">100% Original Products</a>
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quas ratione suscipit labore odit deserunt blanditiis velit perspiciatis quisquam aliquam temporibus consequatur vel voluptatum, nobis voluptatibus officia recusandae sunt!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="js/bootstrap-337.min.js"></script>
     <script src="js/jquery-331.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
