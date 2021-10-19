@@ -133,7 +133,7 @@ include("includes/navigation.php");
                     <div class="col-md-4 col-sm-6 center-responsive">                       
                         <div class="product">
                             <a href="details.php">
-                                <img class="img-responsive" src="admin_area/product_images/Product-5a.jpg" alt="Product Image">
+                                <img class="img-responsive" src="admin_area/product_images/Product-6a(1).jpg" alt="Product Image">
                             </a>
                             <div class="text">
                                 <h3>
