@@ -106,18 +106,18 @@ include("includes/navigation.php");
                     </div>
                     <div class="row" id="thumbs">
                         <div class="col-xs-4">
-                            <a href="#" class="thumb">
-                                <img src="admin_area/product_images/product-1.jpg" alt="Image" class="img-responsive">
-                            </a>
-                        </div>
-                        <div class="col-xs-4">
-                            <a href="#" class="thumb">
-                                <img src="admin_area/product_images/product-2.jpg" alt="Image" class="img-responsive">
-                            </a>
-                        </div>
-                        <div class="col-xs-4">
-                            <a href="#" class="thumb">
+                            <a href="#" data-target="#myCarousel" data-slide-to="0" class="thumb">
                                 <img src="admin_area/product_images/Product-3a.jpg" alt="Image" class="img-responsive">
+                            </a>
+                        </div>
+                        <div class="col-xs-4">
+                            <a href="#" data-target="#myCarousel" data-slide-to="1" class="thumb">
+                                <img src="admin_area/product_images/Product-3b.jpg" alt="Image" class="img-responsive">
+                            </a>
+                        </div>
+                        <div class="col-xs-4">
+                            <a href="#" data-target="#myCarousel" data-slide-to="2" class="thumb">
+                                <img src="admin_area/product_images/Product-3c.jpg" alt="Image" class="img-responsive">
                             </a>
                         </div>
                     </div>
