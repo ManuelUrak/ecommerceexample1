@@ -8,14 +8,14 @@ include("includes/navigation.php");
 
     <div id="content">
         <div class="container">
-            <div class="col-md-12">
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="index.php">Home</a>
-                    </li>
-                    <li>Shop</li>
-                </ul>
-            </div>
+
+            <!-- Breadcrumbs -->
+
+            <?php 
+            
+                include("includes/breadcrumbs.php");
+            
+            ?>
 
             <!-- Sidebar -->
 
