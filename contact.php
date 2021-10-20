@@ -1,3 +1,5 @@
+<!-- Header and Navbar -->
+
 <?php 
 
     include("includes/header.php");
@@ -6,18 +8,27 @@
 ?>
 <div id="content">
     <div class="container">
+
+        <!-- Breadcrumbs -->
+
         <?php 
         
             include("includes/breadcrumbs.php");
         
         ?>
         <div class="col-md-3">
+
+            <!-- Sidebar -->
+
             <?php 
             
                 include("includes/sidebar.php");
             
             ?>
         </div>
+
+        <!-- Contact Form Page -->
+
         <div class="col-md-9">
             <div class="box">
                 <div class="box-header">
@@ -55,6 +66,9 @@
         </div>
     </div>
 </div>
+
+<!-- Footer -->
+
 <?php 
 
     include("includes/footer.php");
