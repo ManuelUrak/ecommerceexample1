@@ -452,3 +452,11 @@ body{
     font-weight: 700;
     color: #555555;
 }
+
+/* Costumer Registration Page Styles*/
+
+@-moz-document url-prefix(){
+    .form-height-costum{
+        height: auto;
+    }
+}

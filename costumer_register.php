@@ -65,7 +65,7 @@
                         </div>
                         <div class="form-group">
                             <label>Your Profile Picture (optional)</label>
-                            <input class="form-control" type="file" name="c_picture">
+                            <input class="form-control form-height-costum" type="file" name="c_picture">
                         </div>
                         <div class="text-center">
                             <button type="submit" name="submit" class="btn btn-primary">
