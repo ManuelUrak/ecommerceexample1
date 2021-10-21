@@ -28,6 +28,9 @@
             
             ?>
         </div>
+
+        <!-- My Account Page -->
+
         <div class="col-md-9">
             <div class="box">
                 <?php
