@@ -30,11 +30,26 @@
         </div>
         <div class="col-md-9">
             <div class="box">
-                <?php 
+                <?php
                 
-                    if(isset($_GET['my_orders'])){
-                        include("customer/my_orders.php");
+                    switch($_GET){
+                        case isset($_GET['my_orders']):
+                            include("customer/my_orders.php");
+                            break;
+                        case isset($_GET['offline_payment']):
+                            include("customer/pay_offline.php");
+                            break;
+                        case isset($_GET['edit_account']):
+                            include("customer/edit_account.php");
+                            break;
+                        case isset($_GET['change_password']):
+                            include("customer/change_password.php");
+                            break;
+                        case isset($_GET['delete_account']):
+                            include("customer/delete_account.php");
+                            break;
                     }
+                        
                 
                 ?>
             </div>
