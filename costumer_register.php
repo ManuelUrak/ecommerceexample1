@@ -1,6 +1,8 @@
 <!-- Header and Navbar -->
 
-<?php 
+<?php
+
+    $page = "register";
 
     include("includes/header.php");
     include("includes/navigation.php")
