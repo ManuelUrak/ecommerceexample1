@@ -1,6 +1,8 @@
 <!-- Header and Navbar -->
 
-<?php 
+<?php
+
+    $page = "account";
 
     include("includes/header.php");
     include("includes/navigation.php")

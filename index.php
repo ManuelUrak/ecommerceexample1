@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+$page = "home";
 
 include("includes/header.php");
 include("includes/navigation.php");

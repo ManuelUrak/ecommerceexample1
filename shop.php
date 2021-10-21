@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+$page = "shop";
 
 include("includes/header.php");
 include("includes/navigation.php");

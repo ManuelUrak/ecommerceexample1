@@ -1,6 +1,8 @@
 <!-- Header And Navbar -->
 
-<?php 
+<?php
+
+    $page = "cart";
 
     include("includes/header.php");
     include("includes/navigation.php");
