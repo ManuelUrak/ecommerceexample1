@@ -6,22 +6,24 @@
             <a href="index.php">Home</a>
         </li>
         <li>
-            <?php 
+            <?php
             
-            if($page == "shop"){
-                echo 'Shop';
-            }
-            else if($page == "contact"){
-                echo 'Contact';
-            }
-            else if($page == "cart"){
-                echo 'Cart';
-            }
-            else if($page == "register"){
-                echo 'Register';
-            }
-            else if($page == "account"){
-                echo 'My Account';
+            switch($page){
+                case $page == "shop":
+                    echo 'Shop';
+                    break;
+                case $page == "contact":
+                    echo 'Contact';
+                    break;
+                case $page == "cart":
+                    echo 'Cart';
+                    break;
+                case $page == "register":
+                    echo 'Register';
+                    break;
+                case $page == "account":
+                    echo 'My Account';
+                    break;
             }
             
             ?>
