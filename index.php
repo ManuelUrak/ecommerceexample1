@@ -8,6 +8,8 @@ $page = "home";
 
 include("includes/db.php");
 
+// Show products functionality
+
 include("functions/functions.php");
 
 /*Header and Navbar*/

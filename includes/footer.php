@@ -19,6 +19,9 @@
                 </ul>
                 <hr class="hidden-lg hidden-md hidden-sm">
             </div>
+
+            <!-- Category Section -->
+
             <div class="col-sm-6 col-md-3">
                 <h4>Top Categories</h4>
                 <ul>

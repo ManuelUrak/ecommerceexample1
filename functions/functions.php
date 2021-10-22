@@ -1,6 +1,10 @@
 <?php 
 
+//Connection to the database
+
 include("./includes/db.php");
+
+//Fetch products to the page showcases
 
 $db = $con;
 
