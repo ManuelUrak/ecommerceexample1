@@ -1,8 +1,12 @@
-<!-- Connection to the database -->
+<?php
 
-<?php 
+//Connection to the database
 
 include("../includes/db.php");
+
+//Upload data from the page to the database
+
+include("functions/insert_products_function.php");
 
 ?>
 
@@ -72,7 +76,7 @@ include("../includes/db.php");
                         <div class="form-group">
                             <label class="col-md-3 control-label">Categories</label>
                             <div class="col-md-6">
-                                <select name="product_cat" class="form-control">
+                                <select name="cat" class="form-control">
                                     <option>Select a category...</option>
                                     <?php 
                                     
