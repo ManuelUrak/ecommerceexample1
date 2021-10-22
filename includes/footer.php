@@ -22,11 +22,21 @@
             <div class="col-sm-6 col-md-3">
                 <h4>Top Categories</h4>
                 <ul>
-                    <li><a href="#">Shirts</a></li>
-                    <li><a href="#">Pants</a></li>
-                    <li><a href="#">Jackets</a></li>
-                    <li><a href="#">Dresses</a></li>                        
-                    <li><a href="#">Shoes</a></li>
+                    <?php 
+                    
+                        $get_cats = "SELECT * FROM product_categories";
+                        $run_cats = mysqli_query($con, $get_cats);
+
+                        while($row_cats=mysqli_fetch_array($run_cats)){
+                            $p_cat_id = $row_cats['p_cat_id'];
+                            $p_cat_title = $row_cats['p_cat_title'];
+
+                            echo "
+                                <li><a href='shop.php?p_cat=$p_cat_id'>$p_cat_title</a></li>
+                            ";
+                        }
+                    
+                    ?>
                 </ul>
                 <hr class="hidden-md hidden-lg">
             </div>

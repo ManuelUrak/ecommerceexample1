@@ -8,6 +8,8 @@ $page = "home";
 
 include("includes/db.php");
 
+include("functions/functions.php");
+
 /*Header and Navbar*/
 
 include("includes/header.php");
@@ -127,158 +129,11 @@ include("includes/navigation.php");
 
     <div id="content" class="container">
         <div class="row">
-            <div class="col-sm-4 col-sm-6 single">
-                <div class="product">
-                    <a href="details.php">
-                        <img class="img-responsive" src="admin_area/product_images/product-1.jpg" alt="Product Image">
-                    </a>
-                    <div class="text">
-                        <h3>
-                            <a href="details.php">Oversized T-Shirt</a>
-                        </h3>
-                        <p class="price">$30</p>
-                        <p class="button">
-                            <a href="details.php" class="btn btn-default">View Details...</a>
-                            <a href="details.php" class="btn btn-primary">
-                                <i class="fa fa-shopping-cart">Add To Cart</i>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 col-sm-6 single">
-                <div class="product">
-                    <a href="details.php">
-                        <img class="img-responsive" src="admin_area/product_images/product-2.jpg" alt="Product Image">
-                    </a>
-                    <div class="text">
-                        <h3>
-                            <a href="details.php">T-Shirt Men</a>
-                        </h3>
-                        <p class="price">$30</p>
-                        <p class="button">
-                            <a href="details.php" class="btn btn-default">View Details...</a>
-                            <a href="details.php" class="btn btn-primary">
-                                <i class="fa fa-shopping-cart">Add To Cart</i>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 col-sm-6 single">
-                <div class="product">
-                    <a href="details.php">
-                        <img class="img-responsive" src="admin_area/product_images/product-1.jpg" alt="Product Image">
-                    </a>
-                    <div class="text">
-                        <h3>
-                            <a href="details.php">Oversized T-Shirt</a>
-                        </h3>
-                        <p class="price">$30</p>
-                        <p class="button">
-                            <a href="details.php" class="btn btn-default">View Details...</a>
-                            <a href="details.php" class="btn btn-primary">
-                                <i class="fa fa-shopping-cart">Add To Cart</i>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 col-sm-6 single">
-                <div class="product">
-                    <a href="details.php">
-                        <img class="img-responsive" src="admin_area/product_images/product-2.jpg" alt="Product Image">
-                    </a>
-                    <div class="text">
-                        <h3>
-                            <a href="details.php">T-Shirt Men</a>
-                        </h3>
-                        <p class="price">$30</p>
-                        <p class="button">
-                            <a href="details.php" class="btn btn-default">View Details...</a>
-                            <a href="details.php" class="btn btn-primary">
-                                <i class="fa fa-shopping-cart">Add To Cart</i>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 col-sm-6 single">
-                <div class="product">
-                    <a href="details.php">
-                        <img class="img-responsive" src="admin_area/product_images/product-1.jpg" alt="Product Image">
-                    </a>
-                    <div class="text">
-                        <h3>
-                            <a href="details.php">Oversized T-Shirt</a>
-                        </h3>
-                        <p class="price">$30</p>
-                        <p class="button">
-                            <a href="details.php" class="btn btn-default">View Details...</a>
-                            <a href="details.php" class="btn btn-primary">
-                                <i class="fa fa-shopping-cart">Add To Cart</i>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 col-sm-6 single">
-                <div class="product">
-                    <a href="details.php">
-                        <img class="img-responsive" src="admin_area/product_images/product-2.jpg" alt="Product Image">
-                    </a>
-                    <div class="text">
-                        <h3>
-                            <a href="details.php">T-Shirt Men</a>
-                        </h3>
-                        <p class="price">$30</p>
-                        <p class="button">
-                            <a href="details.php" class="btn btn-default">View Details...</a>
-                            <a href="details.php" class="btn btn-primary">
-                                <i class="fa fa-shopping-cart">Add To Cart</i>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 col-sm-6 single">
-                <div class="product">
-                    <a href="details.php">
-                        <img class="img-responsive" src="admin_area/product_images/product-1.jpg" alt="Product Image">
-                    </a>
-                    <div class="text">
-                        <h3>
-                            <a href="details.php">Oversized T-Shirt</a>
-                        </h3>
-                        <p class="price">$30</p>
-                        <p class="button">
-                            <a href="details.php" class="btn btn-default">View Details...</a>
-                            <a href="details.php" class="btn btn-primary">
-                                <i class="fa fa-shopping-cart">Add To Cart</i>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 col-sm-6 single">
-                <div class="product">
-                    <a href="details.php">
-                        <img class="img-responsive" src="admin_area/product_images/product-2.jpg" alt="Product Image">
-                    </a>
-                    <div class="text">
-                        <h3>
-                            <a href="details.php">T-Shirt Men</a>
-                        </h3>
-                        <p class="price">$30</p>
-                        <p class="button">
-                            <a href="details.php" class="btn btn-default">View Details...</a>
-                            <a href="details.php" class="btn btn-primary">
-                                <i class="fa fa-shopping-cart">Add To Cart</i>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <?php 
+            
+                        getProducts();
+            
+            ?>
         </div>
     </div>
 

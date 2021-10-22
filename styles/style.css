@@ -224,6 +224,11 @@ body{
     box-sizing: border-box;
 }
 
+#content .product .text h3 a{
+    text-decoration: none;
+    color: gray;
+}
+
 #content .product .text p.price{
     font-size: 18px;
     font-weight: 400;
