@@ -223,10 +223,14 @@ body{
     margin-bottom: 30px;
     box-sizing: border-box;
 }
+#content .product .text h3{
+    text-align: center;
+}
 
 #content .product .text h3 a{
     text-decoration: none;
     color: gray;
+    text-align: center;
 }
 
 #content .product .text p.price{
@@ -255,6 +259,7 @@ body{
 
 #content .product .text{
     padding: 10px 10px 0;
+    height: 100%;
 }
 
 /* Footer Styles */

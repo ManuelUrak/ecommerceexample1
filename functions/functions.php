@@ -8,7 +8,7 @@ include("./includes/db.php");
 
 $db = $con;
 
-//Fetch products to the page showcases
+//Fetch products to the frontpage showcase
 
 function getProducts(){
     global $db;
@@ -32,12 +32,56 @@ function getProducts(){
                         <h3>
                             <a href='details.php?pro_id=$pro_id'>$pro_title</a>
                         </h3>
-                        <p class='price'>$ $pro_price</p>
+                        <p class='price'>$$ $pro_price</p>
                         <p class='button'>
                             <a class='btn btn-default' href='details.php?pro_id=$pro_id'>View Details</a>
                             <a class='btn btn-primary' href='details.php?pro_id=$pro_id'>
                                 <i class='fa fa-shopping-cart'></i> Add To Cart
                             </a> 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        ";
+    }
+}
+
+function getShopProducts(){
+    global $db;
+    $per_page = 6;
+
+    if(isset($_GET['page'])){
+        $page = $_GET['page'];
+    }else{
+        $page = 1;
+    }
+
+    $start_from = ($page - 1) * $per_page;
+    $get_shop_products = "SELECT * FROM products ORDER BY 1 DESC LIMIT $start_from, $per_page";
+    $run_shop_products = mysqli_query($db, $get_shop_products);
+
+    while($row_shop_products=mysqli_fetch_array($run_shop_products)){
+        $pro_id = $row_shop_products['product_id'];
+        $pro_title = $row_shop_products['product_title'];
+        $pro_price = $row_shop_products['product_price'];
+        $pro_img1 = $row_shop_products['product_img1'];
+
+        echo "
+            <div class='col-md-4 col-sm-6 center-responsive'>                       
+                <div class='product'>
+                    <a href='details.php?pro_id=$pro_id'>
+                        <img class='img-responsive' src='admin_area/product_images/$pro_img1'>
+                    </a>
+                    <div class='text'>
+                        <h3>
+                            <a href='details.php?pro_id=$pro_id'>$pro_title</a>
+                        </h3>
+                        <p class='price'>$pro_price</p>
+                        <p class='button'>
+                            <a href='details.php?pro_id=$pro_id' class='btn btn-default'>View Details...</a>
+                            <a href='details.php?pro_id=$pro_id' class='btn btn-primary'>
+                                <i class='fa fa-shopping-cart'>Add To Cart</i>
+                            </a>
                         </p>
                     </div>
                 </div>
@@ -76,7 +120,7 @@ function getCats(){
 
         echo "
             <li>
-                <a href='shop.php?cat_id=$cats_id'>$cats_title</a>
+                <a href='shop.php?cat=$cats_id'>$cats_title</a>
             </li>
         ";
     }
