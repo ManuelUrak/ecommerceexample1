@@ -30,7 +30,7 @@ function getProducts(){
                         <h3>
                             <a href='details.php?pro_id=$pro_id'>$pro_title</a>
                         </h3>
-                        <p>$ $pro_price</p>
+                        <p class='price'>$ $pro_price</p>
                         <p class='button'>
                             <a class='btn btn-default' href='details.php?pro_id=$pro_id'>View Details</a>
                             <a class='btn btn-primary' href='details.php?pro_id=$pro_id'>
