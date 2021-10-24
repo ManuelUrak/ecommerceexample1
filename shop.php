@@ -60,8 +60,11 @@ include("includes/navigation.php");
 
                 <center>
                     <ul class="pagination">
-                        <?php 
+                        <?php
+                        
+                            getPaginator();
                         }
+                        
                         ?>
                     </ul>
                 </center>

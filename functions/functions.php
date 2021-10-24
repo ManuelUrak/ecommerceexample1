@@ -32,7 +32,7 @@ function getProducts(){
                         <h3>
                             <a href='details.php?pro_id=$pro_id'>$pro_title</a>
                         </h3>
-                        <p class='price'>$$ $pro_price</p>
+                        <p class='price'>$ $pro_price</p>
                         <p class='button'>
                             <a class='btn btn-default' href='details.php?pro_id=$pro_id'>View Details</a>
                             <a class='btn btn-primary' href='details.php?pro_id=$pro_id'>
@@ -78,7 +78,7 @@ function getShopProducts(){
                         <h3>
                             <a href='details.php?pro_id=$pro_id'>$pro_title</a>
                         </h3>
-                        <p class='price'>$pro_price</p>
+                        <p class='price'>$ $pro_price</p>
                         <p class='button'>
                             <a href='details.php?pro_id=$pro_id' class='btn btn-default'>View Details...</a>
                             <a href='details.php?pro_id=$pro_id' class='btn btn-primary'>
@@ -90,6 +90,40 @@ function getShopProducts(){
             </div>
         ";
     }
+}
+
+// Paginator
+
+function getPaginator(){
+    global $db;
+    $per_page = 6;
+
+    $query = "SELECT * FROM products";
+    $result = mysqli_query($db, $query);
+    $total_records = mysqli_num_rows($result);
+    $total_pages = ceil($total_records/$per_page);
+
+    echo "
+        <li>
+            <a href='shop.php?page=1'>First Page</a>
+        </li>
+    ";
+
+    $i = 1;
+
+    for($i; $i<=$total_pages; $i++){
+        echo "
+            <li>
+                <a href='shop.php?page=$i'>$i</a>
+            </li>
+        ";
+    }
+
+    echo "
+        <li>
+            <a href='shop.php?page=$total_pages'>Last Page</a>
+        </li>
+    ";
 }
 
 //Fetch product categories
