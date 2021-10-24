@@ -75,6 +75,10 @@ include("includes/navigation.php");
                     <?php 
                     
                     getFilterByPCat();
+
+                    //Filter products by category
+
+                    getFilterByCat();
                     
                     ?>
                 </div>
