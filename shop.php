@@ -64,10 +64,20 @@ include("includes/navigation.php");
                         
                             getPaginator();
                         }
-                        
+
                         ?>
                     </ul>
                 </center>
+
+                <!-- Filter products by product category -->
+
+                <div class="row">
+                    <?php 
+                    
+                    getFilterByPCat();
+                    
+                    ?>
+                </div>
             </div>
         </div>
     </div>
