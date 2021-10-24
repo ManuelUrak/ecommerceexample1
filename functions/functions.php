@@ -46,6 +46,8 @@ function getProducts(){
     }
 }
 
+//Fetch products to the shop page
+
 function getShopProducts(){
     global $db;
     $per_page = 6;
@@ -90,6 +92,8 @@ function getShopProducts(){
     }
 }
 
+//Fetch product categories
+
 function getPCats(){
     global $db;
 
@@ -107,6 +111,8 @@ function getPCats(){
         ";
     }
 }
+
+//Fetch categories
 
 function getCats(){
     global $db;

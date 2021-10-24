@@ -32,7 +32,9 @@ include("includes/navigation.php");
             <!-- Shop Content -->
 
             <div class="col-md-9">
-                <?php 
+                <?php
+                
+                    //Shop welcome text. Only shown when no filter is active.
                 
                     if(!(isset($_GET['p_cat']) || isset($_GET['cat']))){
                         echo "
@@ -44,12 +46,18 @@ include("includes/navigation.php");
                     }
                 
                 ?>
+
+                <!-- Product Showcase -->
+
                 <div class="row">
                     <?php 
                     if(!(isset($_GET['p_cat']) || isset($_GET['cat']))){
                         getShopProducts();
                     ?>
                 </div>
+
+                <!-- Pagination -->
+
                 <center>
                     <ul class="pagination">
                         <?php 
