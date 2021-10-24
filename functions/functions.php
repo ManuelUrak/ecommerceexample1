@@ -4,9 +4,11 @@
 
 include("./includes/db.php");
 
-//Fetch products to the page showcases
+//Global variable for the database connection
 
 $db = $con;
+
+//Fetch products to the page showcases
 
 function getProducts(){
     global $db;
@@ -43,4 +45,41 @@ function getProducts(){
         ";
     }
 }
+
+function getPCats(){
+    global $db;
+
+    $get_p_cats = "SELECT * FROM product_categories";
+    $run_p_cats = mysqli_query($db, $get_p_cats);
+
+    while($row_p_cats=mysqli_fetch_array($run_p_cats)){
+        $p_cats_id = $row_p_cats['p_cat_id'];
+        $p_cats_title = $row_p_cats['p_cat_title'];
+
+        echo "
+            <li>
+                <a href='shop.php?p_cat=$p_cats_id'>$p_cats_title</a>
+            </li>
+        ";
+    }
+}
+
+function getCats(){
+    global $db;
+
+    $get_cats = "SELECT * FROM categories";
+    $run_cats = mysqli_query($db, $get_cats);
+
+    while($row_cats=mysqli_fetch_array($run_cats)){
+        $cats_id = $row_cats['cat_id'];
+        $cats_title = $row_cats['cat_title'];
+
+        echo "
+            <li>
+                <a href='shop.php?cat_id=$cats_id'>$cats_title</a>
+            </li>
+        ";
+    }
+}
+
 ?>

@@ -1,3 +1,9 @@
+<?php 
+
+include("./functions/functions.php");
+
+?>
+
 <!-- Sidebar -->
 
 <div class="panel panel-default sidebar-menu">
@@ -6,11 +12,7 @@
     </div>
     <div class="panel-body">
         <ul class="nav nav-pills nav-stacked category-menu">
-            <li><a href="#">Shirts</a></li>
-            <li><a href="#">Pants</a></li>
-            <li><a href="#">Dresses</a></li>
-            <li><a href="#">Jackets</a></li>
-            <li><a href="#">Shoes</a></li>
+            <?php getPCats(); ?>
         </ul>
     </div>
 </div>
@@ -20,9 +22,7 @@
     </div>
     <div class="panel-body">
         <ul class="nav nav-pills nav-stacked category-menu">
-            <li><a href="#">Men</a></li>
-            <li><a href="#">Woman</a></li>
-            <li><a href="#">Kids</a></li>
+            <?php getCats(); ?>
         </ul>
     </div>
 </div>
