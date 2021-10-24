@@ -1,3 +1,9 @@
+<?php 
+
+include("db.php");
+
+?>
+
 <!-- Footer -->
 
 <div id="footer">

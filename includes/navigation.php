@@ -48,19 +48,19 @@
             <div class="navbar-collapse collapse" id="navigation">
                 <div class="padding-nav">
                     <ul class="nav navbar-nav left">
-                        <li class="<?php if($page=="home"){?>active<?php } ?>">
+                        <li class="<?php if($page=="home"){echo "active";} ?>">
                             <a href="index.php">Home</a>
                         </li>
-                        <li class="<?php if($page=="shop"){?>active<?php } ?>">
+                        <li class="<?php if($page=="shop"){echo "active";} ?>">
                             <a href="shop.php">Shop</a>
                         </li>
-                        <li class="<?php if($page=="account"){?>active<?php } ?>">
+                        <li class="<?php if($page=="account"){echo "active";} ?>">
                             <a href="my_account.php">My Account</a>
                         </li>
-                        <li class="<?php if($page=="cart"){?>active<?php } ?>">
+                        <li class="<?php if($page=="cart"){echo "active";} ?>">
                             <a href="cart.php">Cart</a>
                         </li>
-                        <li class="<?php if($page=="contact"){?>active<?php } ?>">
+                        <li class="<?php if($page=="contact"){echo "active";} ?>">
                             <a href="contact.php">Contact Us</a>
                         </li>
                     </ul>
