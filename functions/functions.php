@@ -477,4 +477,30 @@ function getCats(){
     }
 }
 
+//Contact Form Submit functionality
+
+function contactSubmit(){
+    if(isset($_POST['submit'])){
+        $sender_name = $_POST['name'];
+        $sender_email = $_POST['email'];
+        $sender_subject = $_POST['subject'];
+        $sender_message = $_POST['message'];
+
+        $reciever_email = "manuel.urak88@gmail.com";
+
+        mail($reciever_email, $sender_name, $sender_email, $sender_subject, $sender_message);
+
+        $email = $_POST['email'];
+        $subject = "Your Contact Request";
+        $msg = "Hello $sender_name, we will answer do your contact request as soon as possible.";
+        $from = "manuel.urak88@gmail.com";
+
+        mail($email, $subject, $msg, $from);
+
+        echo "
+            <h2 align='center'>Your message has been sent successfully!</h2>
+        ";
+    }
+}
+
 ?>
