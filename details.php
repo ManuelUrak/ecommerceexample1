@@ -1,8 +1,15 @@
 <?php 
 
+//Connection to the database
+
 include("includes/db.php");
+
+//Header and navbar
+
 include("includes/header.php");
 include("includes/navigation.php");
+
+//Display the correct product from the database
 
 if(isset($_GET['pro_id'])){
     $product_id = $_GET['pro_id'];
@@ -28,7 +35,10 @@ if(isset($_GET['pro_id'])){
 
 <div id="content">
     <div class="container">
-        <div class="col-md-12">                
+        <div class="col-md-12">
+            
+            <!-- Breadcrumbs -->
+
             <ul class="breadcrumb">
                 <li>
                     <a href="index.php">Home</a>
@@ -102,7 +112,8 @@ if(isset($_GET['pro_id'])){
 
                     <div class="box">
                         <h1 class="center"><?php echo "$pro_title"; ?></h1>
-                        <form action="" class="form-horizontal" method="post">
+                        <?php addToCart(); ?>
+                        <form action="details.php?add_cart=<?php echo "$product_id" ?>" class="form-horizontal" method="post">
                             <div class="form-group">
                                 <label for="" class="col-md-5 control-label">Product Quantity</label>
                                 <div class="col-md-7">
@@ -118,8 +129,8 @@ if(isset($_GET['pro_id'])){
                             <div class="form-group">
                                 <label class="col-md-5 control-label">Size</label>
                                 <div class="col-md-7">
-                                    <select name="product_size" id="" class="form-control">
-                                        <option>Select a size...</option>
+                                    <select name="product_size" id="" class="form-control" required oninput="setCustomValidity('')" oninvalid="setCustomValidity('Please pick a size!')">
+                                        <option disabled selected>Select a size...</option>
                                         <option>S</option>
                                         <option>M</option>
                                         <option>L</option>
