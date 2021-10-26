@@ -6,7 +6,7 @@
         <div class="container">
             <div class="col-md-6 offer">
                 <a href="#" class="btn btn-success btn-sm">Welcome</a>
-                <a href="checkout.php"><?php totalItems(); ?> Items In Your Cart, Total Price: 300.oo$</a>
+                <a href="checkout.php"><?php totalItems(); ?> Items In Your Cart, Total Price: <?php totalPrice(); ?></a>
             </div>
             <div class="col-md-6">
                 <ul class="menu">
