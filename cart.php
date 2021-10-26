@@ -1,8 +1,10 @@
-<!-- Header And Navbar -->
-
 <?php
 
+    //Variable that points out on which page we're on
+
     $page = "cart";
+
+    //Header and Navbar
 
     include("includes/header.php");
     include("includes/navigation.php");
@@ -26,7 +28,7 @@
             <div class="box">
                 <form action="cart.php" method="post" enctype="multipart/form-data">
                     <h1>Shopping Cart</h1>
-                    <p class="text-muted">You currently have 2 item(s) in your cart</p>
+                    <p class="text-muted">You currently have <?php echo totalItems(); ?> item(s) in your cart</p>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -39,68 +41,18 @@
                                     <th colspan="2">Sub-Total</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <img src="admin_area/product_images/Product-3a.jpg" alt="Image" class="img-responsive">
-                                    </td>
-                                    <td>
-                                        <a href="#">M-Dev Polo Shirt</a>
-                                    </td>
-                                    <td>2</td>
-                                    <td>$30</td>
-                                    <td>Large</td>
-                                    <td>
-                                        <input type="checkbox" name="remove[]">
-                                    </td>
-                                    <td>$60</td>
-                                </tr>
-                            </tbody>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <img src="admin_area/product_images/product-1.jpg" alt="Image" class="img-responsive">
-                                    </td>
-                                    <td>
-                                        <a href="#">Oversized Shirt Woman</a>
-                                    </td>
-                                    <td>2</td>
-                                    <td>$30</td>
-                                    <td>Large</td>
-                                    <td>
-                                        <input type="checkbox" name="remove[]">
-                                    </td>
-                                    <td>$60</td>
-                                </tr>
-                            </tbody>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <img src="admin_area/product_images/Product-6a(1).jpg" alt="Image" class="img-responsive">
-                                    </td>
-                                    <td>
-                                        <a href="#">M-Dev Tanktop Woman</a>
-                                    </td>
-                                    <td>2</td>
-                                    <td>$30</td>
-                                    <td>Large</td>
-                                    <td>
-                                        <input type="checkbox" name="remove[]">
-                                    </td>
-                                    <td>$60</td>
-                                </tr>
-                            </tbody>
+                            <?php getCartProducts(); ?>
                             <tfoot>
                                 <tr>
                                     <th colspan="5">Total</th>
-                                    <th colspan="2">$180</th>
+                                    <th colspan="2"><?php totalPrice(); ?></th>
                                 </tr>
                             </tfoot>
                         </table>
                     </div>
                     <div class="box-footer">
                         <div class="pull-left">
-                            <a href="index.php" class="btn btn-default">
+                            <a href="shop.php" class="btn btn-default">
                                 <i class="fa fa-chevron-left"></i> Continue Shopping
                             </a>
                         </div>
@@ -115,6 +67,13 @@
                     </div>
                 </form>
             </div>
+            <?php
+            
+            updateCart();
+
+            echo @$up_cart = updateCart();
+           
+            ?>
 
             <!-- Suggested Products -->
 
@@ -140,7 +99,7 @@
                         <tbody>
                             <tr>
                                 <td>Sub-Total</td>
-                                <th>$180</th>
+                                <th><?php totalPrice(); ?></th>
                             </tr>
                             <tr>
                                 <td>Shipping Costs</td>
@@ -148,7 +107,7 @@
                             </tr>
                             <tr class="total">
                                 <td>Total</td>
-                                <td>$180</td>
+                                <td><?php totalPrice(); ?></td>
                             </tr>
                         </tbody>
                     </table>

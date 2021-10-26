@@ -95,6 +95,27 @@ function totalPrice(){
     echo "$" . $total;
 }
 
+//Update/Delete products from the cart
+
+function updateCart(){
+    global $con;
+
+    if(isset($_POST['update'])){
+        foreach($_POST['remove'] as $remove_id){
+            $delete_product = "delete from cart where p_id='$remove_id'";
+            $run_delete = mysqli_query($con,$delete_product);
+
+            if($run_delete){
+                echo "
+                    <script>
+                        window.open('cart.php','_self')
+                    </script>
+                ";
+            }
+        }
+    }
+}
+
 //Fetch products to the frontpage showcase
 
 function getProducts(){
@@ -175,6 +196,53 @@ function getShopProducts(){
                     </div>
                 </div>
             </div>
+        ";
+    }
+}
+
+//Fetch cart products
+
+function getCartProducts(){
+    global $db;
+
+    $ip_add = getUserIP();
+    $get_cart = "SELECT * FROM cart WHERE ip_add='$ip_add'";
+    $run_cart = mysqli_query($db, $get_cart);
+
+    while($row_cart=mysqli_fetch_array($run_cart)){
+        $p_id = $row_cart['p_id'];
+        $p_size = $row_cart['size'];
+        $p_qty = $row_cart['qty'];
+
+        $get_products = "SELECT * FROM products WHERE product_id='$p_id'";
+        $run_products = mysqli_query($db, $get_products);
+
+        while($row_products=mysqli_fetch_array($run_products)){
+            $pro_id = $row_products['product_id'];
+            $pro_title = $row_products['product_title'];
+            $pro_img1 = $row_products['product_img1'];
+            $pro_price = $row_products['product_price'];
+            $sub_total = $row_products['product_price'] * $p_qty;
+        }
+
+        echo "
+            <tbody>
+                <tr>
+                    <td>
+                        <img src='admin_area/product_images/$pro_img1' class='img-responsive'>
+                    </td>
+                    <td>
+                        <a href='details.php?pro_id=$pro_id'>$pro_title</a>
+                    </td>
+                    <td>$p_qty</td>
+                    <td>$ $pro_price</td>
+                    <td>$p_size</td>
+                    <td>
+                        <input type='checkbox' name='remove[]' value='$pro_id'>
+                    </td>
+                    <td>$ $sub_total</td>
+                </tr>
+            </tbody>
         ";
     }
 }
