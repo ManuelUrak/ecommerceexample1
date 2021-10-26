@@ -92,6 +92,36 @@ function getShopProducts(){
     }
 }
 
+//Fetch product suggestions
+
+function getSuggestions(){
+    global $db;
+
+    $get_products = "SELECT * FROM products ORDER BY 1 DESC LIMIT 0,3";
+    $run_products = mysqli_query($db, $get_products);
+
+    while($row_products=mysqli_fetch_array($run_products)){
+        $pro_id = $row_products['product_id'];
+        $pro_title = $row_products['product_title'];
+        $pro_price = $row_products['product_price'];
+        $pro_img1 = $row_products['product_img1'];
+
+        echo "
+        <div class='col-md-3 col-sm-6 center-responsive'>
+            <div class='product same-height'>
+                <a href='details.php?pro_id=$pro_id'>
+                    <img class='img-responsive' src='admin_area/product_images/$pro_img1' alt='Image'>
+                </a>
+                <div class='text'>
+                    <h3><a href='details.php?pro_id=$pro_id'></a>$pro_title</h3>
+                    <p class='price'>$ $pro_price</p>
+                </div>
+            </div>
+        </div>
+        ";
+    }
+}
+
 //Filter products by product category
 
 function getFilterByPCat(){
