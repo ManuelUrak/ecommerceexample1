@@ -6,7 +6,7 @@
         <div class="container">
             <div class="col-md-6 offer">
                 <a href="#" class="btn btn-success btn-sm">Welcome</a>
-                <a href="checkout.php">4 Items In Your Cart, Total Price: 300.oo$</a>
+                <a href="checkout.php"><?php totalItems(); ?> Items In Your Cart, Total Price: 300.oo$</a>
             </div>
             <div class="col-md-6">
                 <ul class="menu">
@@ -70,7 +70,7 @@
 
                 <a href="cart.php" class="btn navbar-btn btn-primary right">
                     <i class="fa fa-shopping-cart"></i>
-                    <span>4 Items In Your Cart</span>
+                    <span><?php totalItems(); ?> Items In Your Cart</span>
                 </a>
 
                 <!-- Search Toggle On Mobile View -->

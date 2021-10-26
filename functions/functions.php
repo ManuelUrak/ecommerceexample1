@@ -56,6 +56,19 @@ function addToCart(){
     }
 }
 
+//Get total items from the cart
+
+function totalItems(){
+    global $db;
+
+    $ip_add = getUserIP();
+    $get_items = "SELECT * FROM cart WHERE ip_add='$ip_add'";
+    $run_items = mysqli_query($db, $get_items);
+    $count = mysqli_num_rows($run_items);
+
+    echo "$count";
+}
+
 //Fetch products to the frontpage showcase
 
 function getProducts(){

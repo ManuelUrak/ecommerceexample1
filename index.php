@@ -4,14 +4,6 @@
 
 $page = "home";
 
-/*Connection to the database*/
-
-include("includes/db.php");
-
-// Show products functionality
-
-include("functions/functions.php");
-
 /*Header and Navbar*/
 
 include("includes/header.php");

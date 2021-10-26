@@ -1,9 +1,3 @@
-<?php 
-
-include("./functions/functions.php");
-
-?>
-
 <!-- Sidebar -->
 
 <div class="panel panel-default sidebar-menu">

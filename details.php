@@ -1,9 +1,5 @@
 <?php 
 
-//Connection to the database
-
-include("includes/db.php");
-
 //Header and navbar
 
 include("includes/header.php");

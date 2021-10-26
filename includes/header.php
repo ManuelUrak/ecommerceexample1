@@ -1,3 +1,15 @@
+<?php 
+
+//Connection to the database
+
+include("db.php");
+
+//Connection to the functionality
+
+include("./functions/functions.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
