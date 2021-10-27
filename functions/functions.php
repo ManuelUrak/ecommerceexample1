@@ -597,12 +597,18 @@ function login(){
         $check_cart = mysqli_num_rows($run_cart);
 
         if($check_customer==0){
+
+            //Shows a message if the users login credentials are worng
+
             echo "
                 <script>
                     alert('Login failed! Please check your Email and Password.')
                 </script>
             ";
         }else if($check_customer==1 && $check_cart==0){
+
+            //Redirects the user to the "My Account"-page if the user is successfully logged in and his cart is empty
+
             $_SESSION['customer_email'] = $customer_email;
 
             echo "
@@ -612,6 +618,9 @@ function login(){
                 </script>
             ";
         }else if($check_customer==1 && $check_cart>0){
+
+            //Redirects the user to the cart if the user is successfully logged in and has something in his cart
+
             $_SESSION['customer_email'] = $customer_email;
 
             echo "

@@ -1,6 +1,10 @@
 <?php
 
+//A variable that declares on what page we're on
+
 $page = "login";
+
+//Header and navbar
 
 include("includes/header.php");
 include("includes/navigation.php");
@@ -26,6 +30,9 @@ include("includes/navigation.php");
             
             ?>
         </div>
+
+        <!-- Redirects the user to the homepage if he is already logged in and tries to access this page -->
+
         <?php 
         
         if(isset($_SESSION['costumer_email'])){
@@ -37,6 +44,9 @@ include("includes/navigation.php");
         }
         
         ?>
+
+        <!-- Login Page -->
+
         <div class="col-md-9">
             <div class="box">
                 <div class="box-header">
@@ -62,6 +72,9 @@ include("includes/navigation.php");
                     </div>
                 </form>
             </div>
+
+            <!-- Login functionality -->
+
             <?php login(); ?>
         </div>
     </div>
