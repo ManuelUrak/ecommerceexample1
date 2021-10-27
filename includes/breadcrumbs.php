@@ -24,6 +24,9 @@
                 case $page == "account":
                     echo 'My Account';
                     break;
+                case $page == "login";
+                    echo 'Login';
+                    break;
             }
             
             ?>

@@ -577,4 +577,51 @@ function customerRegistration(){
     }
 }
 
+// Login functionality
+
+function login(){
+    global $db;
+
+    if(isset($_POST['login'])){
+        $customer_email = $_POST['c_email'];
+        $customer_password = $_POST['c_pass'];
+        $select_customer = "SELECT * FROM customers 
+            WHERE customer_email='$customer_email' 
+            AND customer_pass='$customer_password'
+        ";
+        $run_customer = mysqli_query($db, $select_customer);
+        $get_ip = getUserIP();
+        $check_customer = mysqli_num_rows($run_customer);
+        $select_cart = "SELECT * FROM cart WHERE ip_add='$get_ip'";
+        $run_cart = mysqli_query($db, $select_cart);
+        $check_cart = mysqli_num_rows($run_cart);
+
+        if($check_customer==0){
+            echo "
+                <script>
+                    alert('Login failed! Please check your Email and Password.')
+                </script>
+            ";
+        }else if($check_customer==1 && $check_cart==0){
+            $_SESSION['customer_email'] = $customer_email;
+
+            echo "
+                <script>
+                    alert('Successfully logged in!')
+                    window.open('my_account.php?my_orders', '_self')
+                </script>
+            ";
+        }else if($check_customer==1 && $check_cart>0){
+            $_SESSION['customer_email'] = $customer_email;
+
+            echo "
+                <script>
+                    alert('Successfully logged in!')
+                    window.open('cart.php', '_self')
+                </script>
+            ";
+        }
+    }
+}
+
 ?>

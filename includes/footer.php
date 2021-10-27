@@ -14,8 +14,22 @@
                 <hr>
                 <h4>User Section</h4>
                 <ul>
-                    <li><a href="checkout.php">Login</a></li>
-                    <li><a href="costumer_register">Register</a></li>
+                    <?php 
+
+                    /* TODO: For some reason this doesn't work */
+                    
+                    if(!isset($_SESSION['costumer_email'])){
+                        echo "
+                            <li><a href='login.php'>Login</a></li>
+                            <li><a href='costumer_register.php'>Register</a></li>
+                        ";
+                    }else{
+                        echo "
+                            <li><a href='logout.php'>Logout</a></li>
+                        ";
+                    }
+                    
+                    ?>
                 </ul>
                 <hr class="hidden-lg hidden-md hidden-sm">
             </div>

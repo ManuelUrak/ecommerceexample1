@@ -45,7 +45,7 @@
                         
                             if(!isset($_SESSION['customer_email'])){
                                 echo "
-                                    <a href='checkout.php'>Login</a>
+                                    <a href='login.php'>Login</a>
                                 ";
                             }else{
                                 echo "
