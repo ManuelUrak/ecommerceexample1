@@ -5,7 +5,17 @@
     <div id="top">
         <div class="container">
             <div class="col-md-6 offer">
-                <a href="#" class="btn btn-success btn-sm">Welcome</a>
+                <a href="#" class="btn btn-success btn-sm">
+                    <?php 
+                    
+                        if(!isset($_SESSION['customer_email'])){
+                            echo "Welcome Guest";
+                        }else{
+                            echo "Welcome " . $_SESSION['customer_email'] . "";
+                        }
+                    
+                    ?>
+                </a>
                 <a href="checkout.php"><?php totalItems(); ?> Items In Your Cart, Total Price: <?php totalPrice(); ?></a>
             </div>
             <div class="col-md-6">
@@ -20,7 +30,19 @@
                         <a href="cart.php">Cart</a>
                     </li>
                     <li>
-                        <a href="checkout.php">Login</a>
+                        <?php 
+                        
+                            if(!isset($_SESSION['customer_email'])){
+                                echo "
+                                    <a href='checkout.php'>Login</a>
+                                ";
+                            }else{
+                                echo "
+                                    <a href='logout.php'>Logout</a>
+                                ";
+                            }
+                        
+                        ?>
                     </li>
                 </ul>
             </div>

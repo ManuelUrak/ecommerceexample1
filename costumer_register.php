@@ -67,10 +67,10 @@
                         </div>
                         <div class="form-group">
                             <label>Your Profile Picture (optional)</label>
-                            <input class="form-control form-height-costum" type="file" name="c_picture">
+                            <input class="form-control form-height-costum" type="file" name="c_image">
                         </div>
                         <div class="text-center">
-                            <button type="submit" name="submit" class="btn btn-primary">
+                            <button type="submit" name="register" class="btn btn-primary">
                                 <i class="fa fa-user-md"></i> Sign Up
                             </button>
                         </div>
@@ -80,6 +80,12 @@
         </div>
     </div>
 </div>
+
+<?php 
+
+    customerRegistration();
+
+?>
 
 <!-- Footer -->
 
