@@ -1,5 +1,7 @@
 <?php
 
+//Current session
+
 session_start();
 
 //Connection to the database
