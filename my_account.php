@@ -1,11 +1,23 @@
-<!-- Header and Navbar -->
-
 <?php
+
+    //A variable that declares on which page we're on
 
     $page = "account";
 
+    //Header and navbar
+
     include("includes/header.php");
-    include("includes/navigation.php")
+    include("includes/navigation.php");
+
+    //Redirects the user to the login page if he's not logged in and tries to access this page
+
+    if(!isset($_SESSION['customer_email'])){
+        echo "
+            <script>
+                window.open('login.php', '_self')
+            </script>
+        ";
+    }
 
 ?>
 <div id="content">

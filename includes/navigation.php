@@ -16,7 +16,7 @@
                     
                     ?>
                 </a>
-                <a href="checkout.php"><?php totalItems(); ?> Items In Your Cart, Total Price: <?php totalPrice(); ?></a>
+                <a href="cart.php"><?php totalItems(); ?> Items In Your Cart, Total Price: <?php totalPrice(); ?></a>
             </div>
             <div class="col-md-6">
                 <ul class="menu">
@@ -88,7 +88,19 @@
                             <a href="shop.php">Shop</a>
                         </li>
                         <li class="<?php if($page=="account"){echo "active";} ?>">
-                            <a href="my_account.php">My Account</a>
+                            <?php 
+                            
+                            if(!isset($_SESSION['customer_email'])){
+                                echo "
+                                    <a href='login.php'>My Account</a>
+                                ";
+                            }else{
+                                echo "
+                                    <a href='my_account.php'>My Account</a>
+                                ";
+                            }
+                            
+                            ?>
                         </li>
                         <li class="<?php if($page=="cart"){echo "active";} ?>">
                             <a href="cart.php">Cart</a>
