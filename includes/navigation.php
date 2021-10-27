@@ -20,12 +20,23 @@
             </div>
             <div class="col-md-6">
                 <ul class="menu">
-                    <li>
-                        <a href="costumer_register.php">Register</a>
-                    </li>
-                    <li>
-                        <a href="my_account.php">My Account</a>
-                    </li>
+                    <?php 
+                    
+                        if(!isset($_SESSION['customer_email'])){
+                            echo "
+                                <li>
+                                    <a href='costumer_register.php'>Register</a>
+                                </li>
+                            ";
+                        }else{
+                            echo "
+                                <li>
+                                    <a href='my_account.php'>My Account</a>
+                                </li>
+                            ";
+                        }
+                    
+                    ?>
                     <li>
                         <a href="cart.php">Cart</a>
                     </li>
