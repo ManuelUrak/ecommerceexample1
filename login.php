@@ -35,7 +35,7 @@ include("includes/navigation.php");
 
         <?php 
         
-        if(isset($_SESSION['costumer_email'])){
+        if(isset($_SESSION['customer_email'])){
             echo "
                 <script>
                     window.open('index.php', '_self')

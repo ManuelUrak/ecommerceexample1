@@ -15,10 +15,8 @@
                 <h4>User Section</h4>
                 <ul>
                     <?php 
-
-                    /* TODO: For some reason this doesn't work */
                     
-                    if(!isset($_SESSION['costumer_email'])){
+                    if(!isset($_SESSION['customer_email'])){
                         echo "
                             <li><a href='login.php'>Login</a></li>
                             <li><a href='costumer_register.php'>Register</a></li>

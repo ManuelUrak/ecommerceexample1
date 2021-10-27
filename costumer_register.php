@@ -1,11 +1,23 @@
-<!-- Header and Navbar -->
-
 <?php
+
+    //A variable that declares on which page we're on
 
     $page = "register";
 
+    //Header and navbar
+
     include("includes/header.php");
-    include("includes/navigation.php")
+    include("includes/navigation.php");
+
+    //Redirects the user to the homepage if he's already logged in
+
+    if(isset($_SESSION['customer_email'])){
+        echo "
+            <script>
+                window.open('index.php', '_self')
+            </script>
+        ";
+    }
 
 ?>
 <div id="content">
