@@ -1,7 +1,13 @@
 <div class="panel panel-default sidebar-menu">
+
+    <!-- User image and name -->
+
     <div class="panel-heading">
         <?php getCustomerImgName(); ?>
     </div>
+
+    <!-- Sidebar -->
+
     <div class="panel-body">
         <ul class="nav-pills nav-stacked nav">
             <li class="<?php if(isset($_GET['my_orders'])){echo "active";} ?>">
