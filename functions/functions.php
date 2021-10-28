@@ -684,6 +684,53 @@ function getCustomerImgName(){
     
 }
 
+//Edit account functionality
+
+function editAccount(){
+    global $db;
+
+    $session = $_SESSION['customer_email'];
+
+    $get_customer = "SELECT * FROM customers WHERE customer_email='$session'";
+    $run_customer = mysqli_query($db, $get_customer);
+
+    $row_customer = mysqli_fetch_array($run_customer);
+    $customer_id = $row_customer['customer_id'];
+
+    if(isset($_POST['update'])){
+        $update_id = $customer_id;
+        $customer_name = $_POST['c_name'];
+        $customer_email = $_POST['c_email'];
+        $customer_country = $_POST['c_country'];
+        $customer_city = $_POST['c_city'];
+        $customer_address = $_POST['c_address'];
+        $customer_image = $_FILES['c_image']['name'];
+        $c_image_tmp = $_FILES['c_image']['tmp_name']; 
+
+        move_uploaded_file($c_image_tmp, "customer/customer_images/$customer_image");
+
+        $update_customer = "UPDATE customers SET 
+            customer_name='$customer_name',
+            customer_email='$customer_email',
+            customer_country='$customer_country',
+            customer_city='$customer_city',
+            customer_address='$customer_address',
+            customer_image='$customer_image' 
+            WHERE customer_id='$update_id' 
+        ";
+        $run_customer = mysqli_query($db, $update_customer);
+
+        if($run_customer){
+            echo "
+                <script>
+                    alert('Account successfully updated!')
+                    window.open('my_account.php?edit_account', '_self')
+                </script>
+            ";
+        }
+    }
+}
+
 //Fetch orders to the my_orders page
 
 function getOrders(){
