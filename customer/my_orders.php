@@ -1,3 +1,5 @@
+<!-- My Orders Page -->
+
 <center>
     <h1>My Orders</h1>
     <p class="lead">Your orders in one place</p>
@@ -19,47 +21,9 @@
                 <th> Status: </th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <th> #1 </th>
-                <td> $60 </td>
-                <td> 2456245 </td>
-                <td> 2 </td>
-                <td> Large </td>
-                <td> 10-01-2021 </td>
-                <td> Unpaid </td>
-                <td>
-                    <a class="btn btn-primary btn-sm" target="_blank" href="./confirm.php">Confirm Payment</a>
-                </td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <th> #1 </th>
-                <td> $60 </td>
-                <td> 2456245 </td>
-                <td> 2 </td>
-                <td> Large </td>
-                <td> 10-01-2021 </td>
-                <td> Unpaid </td>
-                <td>
-                    <a class="btn btn-primary btn-sm" target="_blank" href="./confirm.php">Confirm Payment</a>
-                </td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <th> #1 </th>
-                <td> $60 </td>
-                <td> 2456245 </td>
-                <td> 2 </td>
-                <td> Large </td>
-                <td> 10-01-2021 </td>
-                <td> Unpaid </td>
-                <td>
-                    <a class="btn btn-primary btn-sm" target="_blank" href="./confirm.php">Confirm Payment</a>
-                </td>
-            </tr>
-        </tbody>
+
+        <!-- Get the orders from the database -->
+
+        <?php getOrders(); ?>
     </table>
 </div>

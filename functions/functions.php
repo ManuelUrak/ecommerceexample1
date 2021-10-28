@@ -684,4 +684,56 @@ function getCustomerImgName(){
     
 }
 
+//Fetch orders to the my_orders page
+
+function getOrders(){
+    global $db;
+
+    $session = $_SESSION['customer_email'];
+    $query = "SELECT * FROM customers WHERE customer_email='$session'";
+    $run_query = mysqli_query($db, $query);
+    $row_customers = mysqli_fetch_array($run_query);
+    $customer_id = $row_customers['customer_id'];
+
+    $query_orders = "SELECT * FROM customer_orders WHERE customer_id='$customer_id'";
+    $run_orders = mysqli_query($db, $query_orders);
+
+    $i=0;
+
+    while($row_orders=mysqli_fetch_array($run_orders)){
+        $order_id = $row_orders['order_id'];
+        $due_amount = $row_orders['due_amount'];
+        $invoice_no = $row_orders['invoice_no'];
+        $qty = $row_orders['qty'];
+        $size = $row_orders['size'];
+        $order_date = $row_orders['order_date'];
+        $status = $row_orders['order_status'];
+
+        $i++;
+
+        if($status=="pending"){
+            $status = "Unpaid";
+        }else{
+            $status = "Paid";
+        }
+
+        echo "
+            <tbody>
+                <tr>
+                    <th> $i </th>
+                    <td> $due_amount </td>
+                    <td> $invoice_no </td>
+                    <td> $qty </td>
+                    <td> $size </td>
+                    <td> $order_date </td>
+                    <td> $status </td>
+                    <td>
+                        <a class='btn btn-primary btn-sm' target='_blank' href='./confirm.php?order_id=$order_id'>Confirm Payment</a>
+                    </td>
+                </tr>
+            </tbody>
+        ";
+    }
+}
+
 ?>

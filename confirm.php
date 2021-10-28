@@ -1,11 +1,15 @@
-<!-- Header and Navbar -->
-
 <?php
+
+    //Variable that tells us on which page we're on
 
     $page = "confirm";
 
+    //Header and navbar
+
     include("includes/header.php");
     include("includes/navigation.php");
+
+    //Redirects the user to the login page if he's not already logged in
 
     if(!isset($_SESSION['customer_email'])){
         echo "
@@ -13,6 +17,12 @@
                 window.open('login.php', '_self')
             </script>
         ";
+    }
+
+    //Get the order id
+
+    if(isset($_GET['order_id'])){
+        $order_id = $_GET['order_id'];
     }
 
 ?>
@@ -35,11 +45,14 @@
                 include("includes/account_sidebar.php");
             
             ?>
-        </div> 
+        </div>
+        
+        <!-- Confirm Page -->
+
         <div class="col-md-9">
             <div class="box">
                 <h1 align="center">Pleas Confirm Your Payment</h1>
-                <form action="confirm.php" method="post" enctype="multipart/form-data">
+                <form action="confirm.php?order_id=<?php echo $order_id; ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label> Invoice No: </label>
                         <input class="form-control" type="text" name="invoice_no" required>
