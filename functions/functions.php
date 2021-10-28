@@ -736,4 +736,61 @@ function getOrders(){
     }
 }
 
+//Confirm payments functionality
+
+function confirmPayment(){
+    global $db;
+
+    if(isset($_POST['confirm_payment'])){
+        $update_id = $_GET['update_id'];
+        $invoice_no = $_POST['invoice_no'];
+        $amount = $_POST['amount_sent'];
+        $payment_mode = $_POST['payment_mode'];
+        $ref_no = $_POST['ref_no'];
+        $code = $_POST['code'];
+        $payment_date = $_POST['date'];
+
+        $complete = "Complete";
+
+        $insert_payment = "INSERT INTO payments 
+            (
+                invoice_no,
+                amount,
+                payment_mode,
+                ref_no,
+                code,
+                payment_date
+            ) VALUES (
+                '$invoice_no',
+                '$amount',
+                '$payment_mode',
+                '$ref_no',
+                '$code',
+                '$payment_date')
+        ";
+        $run_payment = mysqli_query($db, $insert_payment);
+
+        $update_customer_order = "UPDATE customer_orders 
+            SET order_status='$complete'
+            WHERE order_id='$update_id'        
+        ";
+        $run_customer_order = mysqli_query($db, $update_customer_order);
+
+        $update_pending_order = "UPDATE pending_orders 
+            SET order_status='$complete'
+            WHERE order_id='$update_id'        
+        ";
+        $run_pending_orders = mysqli_query($db, $update_pending_order);
+        
+        if($run_pending_orders){
+            echo "
+                <script>
+                    alert('Your order will be processed as soon as possible')
+                    window.open('my_account.php?my_orders', '_self')
+                </script>
+            ";
+        }
+    }
+}
+
 ?>

@@ -52,7 +52,7 @@
         <div class="col-md-9">
             <div class="box">
                 <h1 align="center">Pleas Confirm Your Payment</h1>
-                <form action="confirm.php?order_id=<?php echo $order_id; ?>" method="post" enctype="multipart/form-data">
+                <form action="confirm.php?update_id=<?php echo $order_id; ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label> Invoice No: </label>
                         <input class="form-control" type="text" name="invoice_no" required>
@@ -65,8 +65,8 @@
                         <label> Payment Method: </label>
                         <select name="payment_mode" class="form-control">
                             <option>Select Payment Method</option>
-                            <option>Paypal</option>
                             <option>Debitcard</option>
+                            <option>Western Union</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -74,15 +74,20 @@
                         <input class="form-control" type="text" name="ref_no" required>
                     </div>
                     <div class="form-group">
+                        <label> Code </label>
+                        <input class="form-control" type="text" name="code" required>
+                    </div>
+                    <div class="form-group">
                         <label> Payment Date </label>
                         <input class="form-control" type="date" name="date" required>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-primary btn-lg">
+                        <button class="btn btn-primary btn-lg" name="confirm_payment">
                             <i class="fa fa-user-md"></i> Confirm Payment
                         </button>
                     </div>
                 </form>
+                <?php confirmPayment(); ?>
             </div>
         </div>    
     </div>
