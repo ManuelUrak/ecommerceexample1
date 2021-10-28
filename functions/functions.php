@@ -790,6 +790,39 @@ function changePass(){
     }
 }
 
+//Delete account functionality
+
+function deleteAccount(){
+    global $db;
+
+    $session = $_SESSION['customer_email'];
+
+    if(isset($_POST['Yes'])){
+        $delete_account = "DELETE FROM customers WHERE customer_email='$session'";
+        $run_delete = mysqli_query($db, $delete_account);
+
+        if($run_delete){
+            session_destroy();
+
+            //TODO: For some reason this echo doesn't work
+
+            echo "
+                <script>
+                    alert('Successfully deleted your account. Hope you're coming back soon!')
+                    window.open('index.php', '_self')
+                </script>
+            ";
+        }
+    }else if(isset($_POST['No'])){
+        echo "
+            <script>
+                alert('Glad you changed your mind!')
+                window.open('my_account.php', '_self')
+            </script>
+        ";
+    }
+}
+
 //Fetch orders to the my_orders page
 
 function getOrders(){
