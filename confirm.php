@@ -87,6 +87,9 @@
                         </button>
                     </div>
                 </form>
+
+                <!-- Confirm payment functionality -->
+
                 <?php confirmPayment(); ?>
             </div>
         </div>    
