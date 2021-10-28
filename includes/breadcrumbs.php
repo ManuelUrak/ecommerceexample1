@@ -30,6 +30,9 @@
                 case $page == "checkout":
                     echo 'Checkout';
                     break;
+                case $page == "confirm":
+                    echo 'Confirm Payment';
+                    break;
             }
             
             ?>

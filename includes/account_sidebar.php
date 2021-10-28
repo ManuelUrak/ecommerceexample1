@@ -1,10 +1,6 @@
 <div class="panel panel-default sidebar-menu">
     <div class="panel-heading">
-        <center>
-            <img src="./customer/customer_images/logo-mdev.png" alt="Image">
-        </center>
-        <br>
-        <h3 align="center" class="panel-title">Name: User</h3>
+        <?php getCustomerImgName(); ?>
     </div>
     <div class="panel-body">
         <ul class="nav-pills nav-stacked nav">

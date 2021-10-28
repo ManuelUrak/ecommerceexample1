@@ -651,4 +651,37 @@ function login(){
     }
 }
 
+//Fetch customer image and name to the account page
+
+function getCustomerImgName(){
+    global $db;
+
+    $session = $_SESSION['customer_email'];
+    $get_customer = "SELECT * FROM customers WHERE customer_email='$session'";
+    $run_customer = mysqli_query($db, $get_customer);
+
+    $row_customer=mysqli_fetch_array($run_customer);
+    $customer_img = $row_customer['customer_image'];
+    $customer_name = $row_customer['customer_name'];
+
+    if(!empty($customer_img)){
+        echo "
+            <center>
+                <img class='img-responsive' src='./customer/customer_images/$customer_img'>
+            </center>
+            <br>
+            <h3 align='center' class='panel-title'>Name: $customer_name</h3>
+        ";
+    }else{
+        echo "
+            <center>
+                <img class='img-responsive' src='./images/placeholder.png'>
+            </center>
+            <br>
+            <h3 align='center' class='panel-title'>Name: $customer_name</h3>
+        ";
+    }
+    
+}
+
 ?>

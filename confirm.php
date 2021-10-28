@@ -1,9 +1,19 @@
 <!-- Header and Navbar -->
 
-<?php 
+<?php
+
+    $page = "confirm";
 
     include("includes/header.php");
-    include("includes/navigation.php")
+    include("includes/navigation.php");
+
+    if(!isset($_SESSION['customer_email'])){
+        echo "
+            <script>
+                window.open('login.php', '_self')
+            </script>
+        ";
+    }
 
 ?>
 <div id="content">
