@@ -1,3 +1,5 @@
+<!-- Change password page -->
+
 <h1 align="center">Change Your Password</h1>
 <form action="" method="post">
     <div class="form-group">
@@ -18,3 +20,7 @@
         </button>
     </div>
 </form>
+
+<!-- Change password functionality -->
+
+<?php changePass(); ?>

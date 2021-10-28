@@ -731,6 +731,65 @@ function editAccount(){
     }
 }
 
+//Change password functionality
+
+function changePass(){
+    global $db;
+
+    if(isset($_POST['submit'])){
+        $session = $_SESSION['customer_email'];
+
+        $old_password = $_POST['old_pass'];
+        $new_password = $_POST['new_pass'];
+        $confirm_password = $_POST['new_pass_again'];
+
+        $get_customer = "SELECT * FROM customers WHERE customer_pass='$old_password'";
+        $run_customer = mysqli_query($db, $get_customer);
+        $check_old_pass = mysqli_num_rows($run_customer);
+
+        if($check_old_pass==0){
+            echo "
+                <script>
+                    alert('Your old password is wrong. Please try again!')
+                    window.open('my_account.php?change_password', '_self')
+                </script>
+            ";
+        }else if($new_password!=$confirm_password){
+            echo "
+                <script>
+                    alert('Passwords did not match. Please try again!')
+                    window.open('my_account.php?change_password', '_self')
+                </script>
+            ";
+        }else if($old_password==$new_password){
+
+            //TODO: For some reason this doesn't work
+
+            echo "
+                <script>
+                    alert('New password isn't different from your old password. Please try again!')
+                    window.open('my_account.php?change_password', '_self')
+                </script>
+            ";
+        }
+
+        $update_password = "UPDATE customers SET 
+            customer_pass='$new_password'
+            WHERE customer_email='$session'
+        ";
+        $run_password = mysqli_query($db, $update_password);
+
+        if($run_password){
+            echo "
+                <script>
+                    alert('Password successfully updated!')
+                    window.open('my_account.php?change_password', '_self')
+                </script>
+            ";
+        }
+    }
+}
+
 //Fetch orders to the my_orders page
 
 function getOrders(){
