@@ -24,8 +24,11 @@
                 case $page == "account":
                     echo 'My Account';
                     break;
-                case $page == "login";
+                case $page == "login":
                     echo 'Login';
+                    break;
+                case $page == "checkout":
+                    echo 'Checkout';
                     break;
             }
             

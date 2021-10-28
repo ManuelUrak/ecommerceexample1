@@ -60,7 +60,7 @@
                             <button type="submit" name="update" value="Update Cart" class="btn btn-default">
                                 <i class="fa fa-refresh"></i> Update Cart
                             </button>
-                            <a href="checkout.php" class="btn btn-primary">
+                            <a href=<?php checkout(); ?> class="btn btn-primary">
                                 Buy <i class="fa fa-chevron-right"></i>
                             </a>
                         </div>

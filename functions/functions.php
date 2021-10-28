@@ -103,7 +103,8 @@ function updateCart(){
     if(isset($_POST['update'])){
         foreach($_POST['remove'] as $remove_id){
             $delete_product = "delete from cart where p_id='$remove_id'";
-            $run_delete = mysqli_query($con,$delete_product);
+            $run_delete = mysqli_query($con, $delete_product);
+            $page = "";
 
             if($run_delete){
                 echo "
@@ -113,6 +114,23 @@ function updateCart(){
                 ";
             }
         }
+    }
+}
+
+//Redirects user to the checkout page if the user got something in his cart
+
+function checkout(){
+    global $db;
+    
+    $ip_add = getUserIP();
+    $query = "SELECT * FROM cart WHERE ip_add='$ip_add'";
+    $run_query = mysqli_query($db, $query);
+    $check_cart = mysqli_num_rows($run_query);
+
+    if($check_cart>0){
+        echo "checkout.php";
+    }else{
+        echo "#";
     }
 }
 
