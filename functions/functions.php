@@ -33,10 +33,13 @@ function addToCart(){
         $p_id = $_GET['add_cart'];
         $product_qty = $_POST['product_qty'];
         $product_size = $_POST['product_size'];
-        $check_product = "SELECT * FROM cart WHERE ip_add='$ip_add' AND p_id='$p_id'";
-        $run_check = mysqli_query($db, $check_product);
+        $sql = "SELECT * FROM cart WHERE ip_add=? AND p_id=?";
+        $run_check = $db->prepare($sql);
+        $run_check->bind_param('si', $ip_add, $p_id);
+        $run_check->execute();
+        $result = $run_check->get_result();
         
-        if(mysqli_num_rows($run_check)>0){
+        if(mysqli_num_rows($result)>0){
             echo "
                 <script>
                     alert('This product has already been added to the cart')
@@ -44,7 +47,20 @@ function addToCart(){
                 </script>
             ";
         }else{
-            $query = "INSERT INTO cart (p_id, ip_add, qty, size) VALUES ('$p_id', '$ip_add', '$product_qty', '$product_size')";
+            $query = "INSERT INTO cart 
+                (
+                    p_id, 
+                    ip_add, 
+                    qty, 
+                    size
+                ) VALUES 
+                (
+                    '$p_id',
+                    '$ip_add',
+                    '$product_qty',
+                    '$product_size'
+                )
+            ";
             $run_query = mysqli_query($db, $query);
 
             echo "
@@ -798,8 +814,10 @@ function deleteAccount(){
     $session = $_SESSION['customer_email'];
 
     if(isset($_POST['Yes'])){
-        $delete_account = "DELETE FROM customers WHERE customer_email='$session'";
-        $run_delete = mysqli_query($db, $delete_account);
+        $sql = "DELETE FROM customers WHERE customer_email=?";
+        $run_delete = $db->prepare($sql);
+        $run_delete->bind_param('s', $session);
+        $run_delete->execute();
 
         if($run_delete){
             session_destroy();
@@ -808,16 +826,16 @@ function deleteAccount(){
 
             echo "
                 <script>
-                    alert('Successfully deleted your account. Hope you're coming back soon!')
-                    window.open('index.php', '_self')
+                    alert('Successfully deleted your account. Hope you're coming back soon!');
+                    window.open('index.php', '_self');
                 </script>
             ";
         }
     }else if(isset($_POST['No'])){
         echo "
             <script>
-                alert('Glad you changed your mind!')
-                window.open('my_account.php', '_self')
+                alert('Glad you changed your mind!');
+                window.open('my_account.php', '_self');
             </script>
         ";
     }
