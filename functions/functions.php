@@ -78,9 +78,12 @@ function totalItems(){
     global $db;
 
     $ip_add = getUserIP();
-    $get_items = "SELECT * FROM cart WHERE ip_add='$ip_add'";
-    $run_items = mysqli_query($db, $get_items);
-    $count = mysqli_num_rows($run_items);
+    $get_items = "SELECT * FROM cart WHERE ip_add=?";
+    $run_items = $db->prepare($get_items);
+    $run_items->bind_param('s', $ip_add);
+    $run_items->execute();
+    $result = $run_items->get_result();
+    $count = mysqli_num_rows($result);
 
     echo "$count";
 }
@@ -92,10 +95,13 @@ function totalPrice(){
 
     $ip_add = getUserIP();
     $total = 0;
-    $select_cart = "SELECT * FROM cart WHERE ip_add='$ip_add'";
-    $run_cart = mysqli_query($db, $select_cart);
+    $select_cart = "SELECT * FROM cart WHERE ip_add=?";
+    $run_cart = $db->prepare($select_cart);
+    $run_cart->bind_param('s', $ip_add);
+    $run_cart->execute();
+    $result = $run_cart->get_result();
 
-    while($record=mysqli_fetch_array($run_cart)){
+    while($record=mysqli_fetch_array($result)){
         $p_id = $record['p_id'];
         $p_qty = $record['qty'];
 
@@ -240,10 +246,13 @@ function getCartProducts(){
     global $db;
 
     $ip_add = getUserIP();
-    $get_cart = "SELECT * FROM cart WHERE ip_add='$ip_add'";
-    $run_cart = mysqli_query($db, $get_cart);
+    $get_cart = "SELECT * FROM cart WHERE ip_add=?";
+    $run_cart = $db->prepare($get_cart);
+    $run_cart->bind_param('s', $ip_add);
+    $run_cart->execute();
+    $result = $run_cart->get_result();
 
-    while($row_cart=mysqli_fetch_array($run_cart)){
+    while($row_cart=mysqli_fetch_array($result)){
         $p_id = $row_cart['p_id'];
         $p_size = $row_cart['size'];
         $p_qty = $row_cart['qty'];
@@ -620,15 +629,21 @@ function login(){
         $customer_email = $_POST['c_email'];
         $customer_password = $_POST['c_pass'];
         $select_customer = "SELECT * FROM customers 
-            WHERE customer_email='$customer_email' 
-            AND customer_pass='$customer_password'
+            WHERE customer_email=? 
+            AND customer_pass=?
         ";
-        $run_customer = mysqli_query($db, $select_customer);
+        $run_customer = $db->prepare($select_customer);
+        $run_customer->bind_param('ss', $customer_email, $customer_password);
+        $run_customer->execute();
+        $result = $run_customer->get_result();
         $get_ip = getUserIP();
-        $check_customer = mysqli_num_rows($run_customer);
-        $select_cart = "SELECT * FROM cart WHERE ip_add='$get_ip'";
-        $run_cart = mysqli_query($db, $select_cart);
-        $check_cart = mysqli_num_rows($run_cart);
+        $check_customer = mysqli_num_rows($result);
+        $select_cart = "SELECT * FROM cart WHERE ip_add=?";
+        $run_cart = $db->prepare($select_cart);
+        $run_cart->bind_param('s', $get_ip);
+        $run_cart->execute();
+        $cart_result = $run_cart->get_result();
+        $check_cart = mysqli_num_rows($cart_result);
 
         if($check_customer==0){
 
@@ -759,22 +774,25 @@ function changePass(){
         $new_password = $_POST['new_pass'];
         $confirm_password = $_POST['new_pass_again'];
 
-        $get_customer = "SELECT * FROM customers WHERE customer_pass='$old_password'";
-        $run_customer = mysqli_query($db, $get_customer);
-        $check_old_pass = mysqli_num_rows($run_customer);
+        $get_customer = "SELECT * FROM customers WHERE customer_pass=?";
+        $run_customer = $db->prepare($get_customer);
+        $run_customer->bind_param('s', $old_password);
+        $run_customer->execute();
+        $result = $run_customer->get_result();
+        $check_old_pass = mysqli_num_rows($result);
 
         if($check_old_pass==0){
             echo "
                 <script>
-                    alert('Your old password is wrong. Please try again!')
-                    window.open('my_account.php?change_password', '_self')
+                    alert('Your old password is wrong. Please try again!');
+                    window.open('my_account.php?change_password', '_self');
                 </script>
             ";
         }else if($new_password!=$confirm_password){
             echo "
                 <script>
-                    alert('Passwords did not match. Please try again!')
-                    window.open('my_account.php?change_password', '_self')
+                    alert('Passwords did not match. Please try again!');
+                    window.open('my_account.php?change_password', '_self');
                 </script>
             ";
         }else if($old_password==$new_password){
@@ -783,23 +801,29 @@ function changePass(){
 
             echo "
                 <script>
-                    alert('New password isn't different from your old password. Please try again!')
-                    window.open('my_account.php?change_password', '_self')
+                    alert('New password isn't different from your old password. Please try again!');
+                    window.open('my_account.php?change_password', '_self');
                 </script>
             ";
         }
 
         $update_password = "UPDATE customers SET 
-            customer_pass='$new_password'
-            WHERE customer_email='$session'
+            customer_pass=?
+            WHERE customer_email=?
         ";
-        $run_password = mysqli_query($db, $update_password);
+        $run_password = $db->prepare($update_password);
+        $run_password->bind_param('ss', $new_password, $session);
+        $run_password->execute();
+        $result_password = $run_password->get_result();
 
-        if($run_password){
+        if($result_password){
+
+            //TODO: For some reason this echo doesn't work
+
             echo "
                 <script>
-                    alert('Password successfully updated!')
-                    window.open('my_account.php?change_password', '_self')
+                    alert('Password successfully updated!');
+                    window.open('my_account.php?change_password', '_self');
                 </script>
             ";
         }
@@ -847,17 +871,24 @@ function getOrders(){
     global $db;
 
     $session = $_SESSION['customer_email'];
-    $query = "SELECT * FROM customers WHERE customer_email='$session'";
-    $run_query = mysqli_query($db, $query);
-    $row_customers = mysqli_fetch_array($run_query);
+
+    $query = "SELECT * FROM customers WHERE customer_email=?";
+    $run_query = $db->prepare($query);
+    $run_query->bind_param('s', $session);
+    $run_query->execute();
+    $result = $run_query->get_result();
+    $row_customers = mysqli_fetch_array($result);
     $customer_id = $row_customers['customer_id'];
 
-    $query_orders = "SELECT * FROM customer_orders WHERE customer_id='$customer_id'";
-    $run_orders = mysqli_query($db, $query_orders);
+    $query_orders = "SELECT * FROM customer_orders WHERE customer_id=?";
+    $run_orders = $db->prepare($query_orders);
+    $run_orders->bind_param('i', $customer_id);
+    $run_orders->execute();
+    $order_result = $run_orders->get_result();
 
     $i=0;
 
-    while($row_orders=mysqli_fetch_array($run_orders)){
+    while($row_orders=mysqli_fetch_array($order_result)){
         $order_id = $row_orders['order_id'];
         $due_amount = $row_orders['due_amount'];
         $invoice_no = $row_orders['invoice_no'];
