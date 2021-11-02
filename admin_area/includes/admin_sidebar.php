@@ -1,3 +1,5 @@
+<!-- Admin Navbar -->
+
 <nav class="navbar-admin navbar-inverse navbar-fixed-top">
     <div class="navbar-header">
         <button type="button" data-toggle="collapse" data-target=".navbar-ex1-collapse" class="navbar-toggle">

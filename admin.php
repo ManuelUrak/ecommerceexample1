@@ -1,11 +1,17 @@
-<?php 
+<?php
+
+//Header
 
 include("includes/header.php");
 
 ?>
 
+<!-- Admin Page -->
+
 <div id="wrapper">
     <?php
+
+        //Navbar
     
         include("admin_area/includes/admin_sidebar.php");
     
@@ -17,7 +23,9 @@ include("includes/header.php");
     </div>
 </div>
 
-<?php 
+<?php
+
+//Footer
 
 include("admin_area/includes/admin_footer.php");
 
