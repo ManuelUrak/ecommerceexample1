@@ -24,20 +24,20 @@
                 <li>
                     <a href="admin.php?view_products">
                         <i class="fa fa-fw fa-envelope"></i> Products
+                        <span class="badge">4</span>
                     </a>
-                    <span class="badge">4</span>
                 </li>
                 <li>
                     <a href="admin.php?view_customers">
                         <i class="fa fa-fw fa-users"></i> Customers
+                        <span class="badge">4</span>
                     </a>
-                    <span class="badge">4</span>
                 </li>
                 <li>
                     <a href="admin.php?view_cats">
                         <i class="fa fa-fw fa-gear"></i> Product Categories
+                        <span class="badge">4</span>
                     </a>
-                    <span class="badge">4</span>
                 </li>
                 <li class="divider"></li>
                 <li>
