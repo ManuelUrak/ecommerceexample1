@@ -4,6 +4,17 @@
 
 include("includes/header.php");
 
+//Redirects the user to the admin login page if he's not logged in as an admin
+
+if(!isset($_SESSION['admin_email'])){
+    echo "
+        <script>
+            alert('You need to log in as an admin to access this page!');
+            window.open('admin_login.php', '_self');
+        </script>
+    ";
+}
+
 ?>
 
 <!-- Admin Page -->

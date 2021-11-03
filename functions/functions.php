@@ -844,7 +844,6 @@ function deleteAccount(){
         $run_delete->execute();
 
         if($run_delete){
-            session_destroy();
 
             //TODO: For some reason this echo doesn't work
 
@@ -862,6 +861,44 @@ function deleteAccount(){
                 window.open('my_account.php', '_self');
             </script>
         ";
+    }
+}
+
+//Admin login functionality
+
+function adminLogin(){
+    global $db;
+
+    if(isset($_POST['admin_login'])){
+        $admin_email = $_POST['admin_email'];
+        $admin_pass = $_POST['admin_pass'];
+
+        $get_admin = "SELECT * FROM admins WHERE
+            admin_email=? AND
+            admin_pass=?
+        ";
+        $run_admin = $db->prepare($get_admin);
+        $run_admin->bind_param('ss', $admin_email, $admin_pass);
+        $run_admin->execute();
+        $result = $run_admin->get_result();
+        $count = mysqli_num_rows($result);
+
+        if($count==1){
+            $_SESSION['admin_email'] = $admin_email;
+
+            echo "
+                <script>
+                    alert('Login successful!');
+                    window.open('admin.php?dashboard', '_self');
+                </script>
+            ";
+        }else{
+            echo "
+                <script>
+                    alert('Login failed! Please check your credentials...');
+                </script>
+            ";
+        }
     }
 }
 
