@@ -15,6 +15,8 @@ if(!isset($_SESSION['admin_email'])){
     ";
 }
 
+//Admin dashboard counter functionality
+
 $get_products = "SELECT * FROM products";
 $run_products = mysqli_query($con, $get_products);
 $count_products = mysqli_num_rows($run_products);

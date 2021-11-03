@@ -126,6 +126,9 @@
                             </tr>
                         </thead>
                         <tbody>
+
+                            <!-- Get new orders functionality -->
+
                             <?php getNewOrders(); ?>
                         </tbody>
                     </table>
