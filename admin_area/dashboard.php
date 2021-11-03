@@ -22,7 +22,7 @@
                         <i class="fa fa-tasks fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">7</div>
+                        <div class="huge"><?php echo $count_products; ?></div>
                         <div>Products</div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                         <i class="fa fa-users fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">7</div>
+                        <div class="huge"><?php echo $count_customers; ?></div>
                         <div>Customers</div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                         <i class="fa fa-tags fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">7</div>
+                        <div class="huge"><?php echo $count_p_cats; ?></div>
                         <div>Product Categories</div>
                     </div>
                 </div>
@@ -88,7 +88,7 @@
                         <i class="fa fa-shopping-cart fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">7</div>
+                        <div class="huge"><?php echo $count_p_orders; ?></div>
                         <div>Orders</div>
                     </div>
                 </div>
@@ -126,24 +126,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>456</td>
-                                <td>example@example.com</td>
-                                <td>4562456</td>
-                                <td>456</td>
-                                <td>5</td>
-                                <td>M</td>
-                                <td>Pending</td>
-                            </tr>
-                            <tr>
-                                <td>456</td>
-                                <td>example@example.com</td>
-                                <td>4562456</td>
-                                <td>456</td>
-                                <td>5</td>
-                                <td>M</td>
-                                <td>Pending</td>
-                            </tr>
+                            <?php getNewOrders(); ?>
                         </tbody>
                     </table>
                 </div>

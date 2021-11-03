@@ -15,6 +15,22 @@ if(!isset($_SESSION['admin_email'])){
     ";
 }
 
+$get_products = "SELECT * FROM products";
+$run_products = mysqli_query($con, $get_products);
+$count_products = mysqli_num_rows($run_products);
+
+$get_customers = "SELECT * FROM customers";
+$run_customers = mysqli_query($con, $get_customers);
+$count_customers = mysqli_num_rows($run_customers);
+
+$get_p_cats = "SELECT * FROM product_categories";
+$run_p_cats = mysqli_query($con, $get_p_cats);
+$count_p_cats = mysqli_num_rows($run_p_cats);
+
+$get_p_orders = "SELECT * FROM pending_orders";
+$run_p_orders = mysqli_query($con, $get_p_orders);
+$count_p_orders = mysqli_num_rows($run_p_orders);
+
 ?>
 
 <!-- Admin Page -->
@@ -33,6 +49,8 @@ if(!isset($_SESSION['admin_email'])){
             
             if(isset($_GET['dashboard'])){
                 include("admin_area/dashboard.php");
+            }else if(isset($_GET['insert_products'])){
+                include("admin_area/insert_products.php");
             }
             
             ?>

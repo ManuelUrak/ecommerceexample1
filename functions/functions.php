@@ -1018,4 +1018,54 @@ function confirmPayment(){
     }
 }
 
+//Fetch newest orders to the admin dashboard
+
+function getNewOrders(){
+    global $db;
+
+    $i = 0;
+    $get_orders = "SELECT * FROM pending_orders ORDER BY 1 DESC LIMIT 0,4";
+    $run_orders = mysqli_query($db, $get_orders);
+
+    while($row_orders=mysqli_fetch_array($run_orders)){
+        $order_id = $row_orders['order_id'];
+        $customer_id = $row_orders['customer_id'];
+        $invoice_no = $row_orders['invoice_no'];
+        $product_id = $row_orders['product_id'];
+        $qty = $row_orders['qty'];
+        $size = $row_orders['size'];
+        $order_status = $row_orders['order_status'];
+        $i ++;
+
+        $get_customer = "SELECT * FROM customers WHERE customer_id='$customer_id'";
+        $run_customer = mysqli_query($db, $get_customer);
+        $row_customer = mysqli_fetch_array($run_customer);
+        $customer_email = $row_customer['customer_email'];
+
+        echo "
+            <tr>
+                <td>$order_id</td>
+                <td>$customer_email</td>
+                <td>$invoice_no</td>
+                <td>$product_id</td>
+                <td>$qty</td>
+                <td>$size</td>
+        ";
+
+        if($order_status=='pending'){
+            echo "
+                <td>Pending</td>
+            ";
+        }else{
+            echo "
+                <td>Complete</td>
+            ";
+        }
+
+        echo "
+            </tr>
+        ";
+    }
+}
+
 ?>

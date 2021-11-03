@@ -1,7 +1,7 @@
 <?php 
 //Connection to the database
 
-include("../includes/db.php");
+include("./includes/db.php");
 
 //Upload product data to the database
 
