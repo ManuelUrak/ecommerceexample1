@@ -1213,4 +1213,110 @@ function updateProduct(){
     }
 }
 
+//Insert product category
+
+function insertPCat(){
+    global $db;
+
+    if(isset($_POST['submit'])){
+        $p_cat_title = $_POST['p_cat_title'];
+        $p_cat_desc = $_POST['p_cat_desc'];
+
+        $insert_p_cat = "INSERT INTO product_categories 
+            (
+                p_cat_title,
+                p_cat_desc
+            )
+            VALUES
+            (
+                '$p_cat_title',
+                '$p_cat_desc'
+            )
+        ";
+        $run_insert = mysqli_query($db, $insert_p_cat);
+
+        if($run_insert){
+            echo "
+                <script>
+                    alert('Product category has been inserted successfully!');
+                    window.open('admin.php?insert_p_cat', '_self');
+                </script>
+            ";
+        }else{
+            echo "
+                <script>
+                    alert('Product category couldn't be inserted...');
+                </script>
+            ";
+        }
+    }
+}
+
+//Fetch product categories into the admin panel
+
+function getPcatsAdmin(){
+    global $db;
+
+    $get_p_cats = "SELECT * FROM product_categories";
+    $run_p_cats = mysqli_query($db, $get_p_cats);
+    
+    while($row_p_cats=mysqli_fetch_array($run_p_cats)){
+        $p_cat_id = $row_p_cats['p_cat_id'];
+        $p_cat_title = $row_p_cats['p_cat_title'];
+        $p_cat_desc = $row_p_cats['p_cat_desc'];
+
+        echo "
+            <tr>
+                <td>$p_cat_id</td>
+                <td>$p_cat_title</td>
+                <td>$p_cat_desc</td>
+                <td>
+                    <a href='admin.php?edit_p_cats=$p_cat_id'>
+                        <i class='fa fa-pencil'></i> Edit
+                    </a>
+                </td>
+                <td>
+                    <a href='admin.php?delete_p_cats=$p_cat_id'>
+                        <i class='fa fa-trash-o'></i> Delete
+                    </a>
+                </td>
+            </tr>
+        ";
+    }
+}
+
+//Edit product category
+
+function updatePCat(){
+    global $db;
+    $update_id = $_GET['edit_p_cats'];
+
+    if(isset($_POST['edit'])){
+        $p_cat_title = $_POST['p_cat_title'];
+        $p_cat_desc = $_POST['p_cat_desc'];
+
+        $update = "UPDATE product_categories SET
+            p_cat_title='$p_cat_title',
+            p_cat_desc='$p_cat_desc'
+            WHERE p_cat_id='$update_id'
+        ";
+        $run_update = mysqli_query($db, $update);
+
+        if($run_update){
+            echo "
+                <script>
+                    alert('Product category updated successfully!');
+                    window.open('admin.php?view_p_cats', '_self')
+                </script>
+            ";
+        }else{
+            echo "
+                <script>
+                    alert('Product category could not be updated...');
+                </script>
+            ";
+        }
+    }
+}
+
 ?>

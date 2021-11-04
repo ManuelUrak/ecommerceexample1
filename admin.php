@@ -65,6 +65,18 @@ $count_p_orders = mysqli_num_rows($run_p_orders);
                 case isset($_GET['edit_product']):
                     include("admin_area/edit_product.php");
                     break;
+                case isset($_GET['insert_p_cat']):
+                    include("admin_area/insert_p_cat.php");
+                    break;
+                case isset($_GET['view_p_cats']):
+                    include("admin_area/view_p_cats.php");
+                    break;
+                case isset($_GET['edit_p_cats']):
+                    include("admin_area/edit_p_cats.php");
+                    break;
+                case isset($_GET['delete_p_cats']):
+                    include("admin_area/delete_p_cats.php");
+                    break;
             }
             
             ?>

@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="admin.php?view_cats">
+                    <a href="admin.php?view_p_cats">
                         <i class="fa fa-fw fa-gear"></i> Product Categories
                         <span class="badge"><?php echo $count_p_cats; ?></span>
                     </a>
@@ -79,7 +79,7 @@
                         <a href="admin.php?insert_p_cat">Insert Product Category</a>
                     </li>
                     <li>
-                        <a href="admin.php?view_p_cat">View Product Categories</a>
+                        <a href="admin.php?view_p_cats">View Product Categories</a>
                     </li>
                 </ul>
             </li>
