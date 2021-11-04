@@ -8,13 +8,11 @@ include("functions/insert_products_function.php");
 
     <!-- Admin Breadcrumbs -->
 
-    <div class="row">
-        <div class="col-lg-12">
-            <ol class="breadcrumb">
-                <li class="active"><i class="fa fa-dashboard"></i>Insert Products</li>
-            </ol>
-        </div>
-    </div>
+    <?php 
+    
+    include("includes/admin_breadcrumbs.php");
+    
+    ?>
 
     <!-- Insert Products Page -->
 

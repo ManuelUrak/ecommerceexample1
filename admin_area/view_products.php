@@ -1,3 +1,11 @@
+<!-- Admin Breadcrumbs -->
+
+<?php 
+
+include("includes/admin_breadcrumbs.php");
+
+?>
+
 <!-- View Products Page -->
 
 <div class="row">
