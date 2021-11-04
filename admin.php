@@ -46,13 +46,19 @@ $count_p_orders = mysqli_num_rows($run_p_orders);
     
     ?>
     <div id="page-wrapper">
-        <div class="container-fluid">
+        <div class="container-fluid site-container">
             <?php 
             
-            if(isset($_GET['dashboard'])){
-                include("admin_area/dashboard.php");
-            }else if(isset($_GET['insert_products'])){
-                include("admin_area/insert_products.php");
+            switch($_GET){
+                case isset($_GET['dashboard']):
+                    include("admin_area/dashboard.php");
+                    break;
+                case isset($_GET['insert_products']):
+                    include("admin_area/insert_products.php");
+                    break;
+                case isset($_GET['view_products']):
+                    include("admin_area/view_products.php");
+                    break;
             }
             
             ?>

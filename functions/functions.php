@@ -1068,4 +1068,52 @@ function getNewOrders(){
     }
 }
 
+//Fetch products to the view-products page on the admin panel
+
+function viewProducts(){
+    global $db;
+
+    $get_products = "SELECT * FROM products";
+    $run_products = mysqli_query($db, $get_products);
+
+    while($row_products=mysqli_fetch_array($run_products)){
+        $product_id = $row_products['product_id'];
+        $product_title = $row_products['product_title'];
+        $product_img = $row_products['product_img1'];
+        $product_price = $row_products['product_price'];
+        $product_keys = $row_products['product_keywords'];
+        $product_date = $row_products['date'];
+        
+        $get_sold = "SELECT * FROM pending_orders WHERE
+            product_id='$product_id'
+        ";
+        $run_sold = mysqli_query($db, $get_sold);
+        $count = mysqli_num_rows($run_sold);
+
+        echo "
+            <tr>
+                <td>$product_id</td>
+                <td>$product_title</td>
+                <td>
+                    <img src='admin_area/product_images/$product_img' width='60' height='60'>
+                </td>
+                <td>$product_price</td>
+                <td>$count</td>
+                <td>$product_keys</td>
+                <td>$product_date</td>
+                <td>
+                    <a href='admin.php?delete_product=$product_id'>
+                        <i class='fa fa-trash-o'></i> Delete
+                    </a>
+                </td>
+                <td>
+                    <a href='admin.php?edit_product=$product_id'>
+                        <i class='fa fa-pencil'></i> Edit
+                    </a>
+                </td>
+            </tr>
+        ";
+    }
+}
+
 ?>
