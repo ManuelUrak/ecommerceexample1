@@ -1116,4 +1116,101 @@ function viewProducts(){
     }
 }
 
+//Update products
+
+function updateProduct(){
+    global $db;
+    $update_id = $_GET['edit_product'];
+
+    $get_product = "SELECT * FROM products WHERE product_id='$update_id'";
+    $run_product = mysqli_query($db, $get_product);
+    $row_product = mysqli_fetch_array($run_product);
+
+    $p_img1 = $row_product['product_img1'];
+    $p_img2 = $row_product['product_img2'];
+    $p_img3 = $row_product['product_img3'];
+
+    if(isset($_POST['edit'])){
+        $product_title = $_POST['product_title'];
+        $product_cat = $_POST['product_cat'];
+        $cat = $_POST['cat'];
+        $product_price = $_POST['product_price'];
+        $product_keywords = $_POST['product_keywords'];
+        $product_desc = $_POST['product_desc'];
+
+        $product_img1 = $_FILES['product_img1']['name'];
+
+        if(empty($product_img1)){
+            $product_img1 = $p_img1;
+        }
+
+        $product_img2 = $_FILES['product_img2']['name'];
+
+        if(empty($product_img2)){
+            $product_img2 = $p_img2;
+        }
+
+        $product_img3 = $_FILES['product_img3']['name'];
+
+        if(empty($product_img3)){
+            $product_img3 = $p_img3;
+        }
+    
+        $temp_name1 = $_FILES['product_img1']['tmp_name'];
+
+        if(empty($temp_name1)){
+            $temp_name1 = $p_img1;
+        }
+
+        $temp_name2 = $_FILES['product_img2']['tmp_name'];
+
+        if(empty($temp_name2)){
+            $temp_name2 = $p_img2;
+        }
+
+        $temp_name3 = $_FILES['product_img3']['tmp_name'];
+
+        if(empty($temp_name3)){
+            $temp_name3 = $p_img3;
+        }
+    
+        //Move uploaded images to the folder
+    
+        move_uploaded_file($temp_name1, "./product_images/$product_img1");
+        move_uploaded_file($temp_name2, "./product_images/$product_img2");
+        move_uploaded_file($temp_name3, "./product_images/$product_img3");
+    
+        //SQL query statement
+
+        $update_product = "UPDATE products SET 
+            p_cat_id='$product_cat',
+            cat_id='$cat',
+            date=NOW(),
+            product_title='$product_title',
+            product_img1='$product_img1',
+            product_img2='$product_img2',
+            product_img3='$product_img3',
+            product_keywords='$product_keywords',
+            product_desc='$product_desc',
+            product_price='$product_price' 
+            WHERE product_id='$update_id'
+        ";
+        $run_product = mysqli_query($db,$update_product);
+
+        echo "
+            <script>
+                alert('Product updated successfully!');
+                window.open('admin.php?view_products', '_self');
+            </script>
+        ";
+    }else{
+        echo "
+            <script>
+                alert('Can't update product...');
+                window.open('admin.php?view_products', '_self');
+            </script>
+        ";
+    }
+}
+
 ?>

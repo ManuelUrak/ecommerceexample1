@@ -62,6 +62,9 @@ $count_p_orders = mysqli_num_rows($run_p_orders);
                 case isset($_GET['delete_product']):
                     include("admin_area/delete_product.php");
                     break;
+                case isset($_GET['edit_product']):
+                    include("admin_area/edit_product.php");
+                    break;
             }
             
             ?>

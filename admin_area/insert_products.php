@@ -123,3 +123,8 @@ include("functions/insert_products_function.php");
             </div>
         </div>
     </div>
+
+<!--Initialize Tinymce Plug In -->
+
+<script src="admin_area/js/tinymce/js/tinymce/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'textarea'});</script>
