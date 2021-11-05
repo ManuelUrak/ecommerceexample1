@@ -38,6 +38,12 @@
                     case isset($_GET['edit_cat']):
                         echo "Dashboard / Edit Category";
                         break;
+                    case isset($_GET['insert_slide']):
+                        echo "Dashboard / Insert Slide Image";
+                        break;
+                    case isset($_GET['view_slides']):
+                        echo "Dashboard / View Slide Images";
+                        break;
                 }
                 
                 ?>

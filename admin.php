@@ -89,6 +89,15 @@ $count_p_orders = mysqli_num_rows($run_p_orders);
                 case isset($_GET['delete_cat']):
                     include("admin_area/delete_cat.php");
                     break;
+                case isset($_GET['insert_slide']):
+                    include("admin_area/insert_slide.php");
+                    break;
+                case isset($_GET['view_slides']):
+                    include("admin_area/view_slides.php");
+                    break;
+                case isset($_GET['delete_slide']):
+                    include("admin_area/delete_slide.php");
+                    break;
             }
             
             ?>

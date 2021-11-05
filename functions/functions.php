@@ -1425,4 +1425,63 @@ function updateCat(){
     }
 }
 
+//Fetch slide images into the admin panel
+
+function getSlidesAdmin(){
+    global $db;
+
+    $get_slides = "SELECT * FROM slider";
+    $run_slides = mysqli_query($db, $get_slides);
+
+    while($row_slides=mysqli_fetch_array($run_slides)){
+        $slide_id = $row_slides['slide_id'];
+        $slide_image = $row_slides['slide_image'];
+
+        echo "
+            <tr>
+                <td>$slide_id</td>
+                <td>
+                    <img src='admin_area/slides_images/$slide_image' width='550' height='250'>
+                </td>
+                <td>
+                    <a href='admin.php?delete_slide=$slide_id'>
+                        <i class='fa fa-trash-o'></i> Delete Image
+                    </a>
+                </td>
+            </tr
+        ";
+    }
+}
+
+//Upload slide image
+
+function uploadSlide(){
+    global $db;
+
+    if(isset($_POST['upload'])){
+        $slide_image = $_FILES['slide_image']['name'];
+        $tmp_image = $_FILES['slide_image']['tmp_name'];
+
+        move_uploaded_file($tmp_image, "admin_area/slides_images/$slide_image");
+
+        $upload = "INSERT INTO slider (slide_image) VALUES ('$slide_image')";
+        $run_upload = mysqli_query($db, $upload);
+
+        if($run_upload){
+            echo "
+                <script>
+                    alert('Slide image uploaded successfully!');
+                    window.open('admin.php?insert_slide', '_self');
+                </script>
+            ";
+        }else{
+            echo "
+                <script>
+                    alert('Upload failed...');
+                </script>
+            ";
+        }
+    }
+}
+
 ?>
