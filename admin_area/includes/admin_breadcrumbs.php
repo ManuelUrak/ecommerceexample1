@@ -29,6 +29,15 @@
                     case isset($_GET['edit_p_cats']):
                         echo "Dashboard / Edit Product Category";
                         break;
+                    case isset($_GET['view_cats']):
+                        echo "Dashboard / Categories";
+                        break;
+                    case isset($_GET['insert_cat']):
+                        echo "Dashboard / Insert Category";
+                        break;
+                    case isset($_GET['edit_cat']):
+                        echo "Dashboard / Edit Category";
+                        break;
                 }
                 
                 ?>

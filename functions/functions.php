@@ -1319,4 +1319,110 @@ function updatePCat(){
     }
 }
 
+//Fetch categories to the admin panel
+
+function getCatsAdmin(){
+    global $db;
+
+    $get_cats = "SELECT * FROM categories";
+    $run_cats = mysqli_query($db, $get_cats);
+
+    while($row_cats=mysqli_fetch_array($run_cats)){
+        $cat_id = $row_cats['cat_id'];
+        $cat_title = $row_cats['cat_title'];
+        $cat_desc = $row_cats['cat_desc'];
+
+        echo "
+            <tr>
+                <td>$cat_id</td>
+                <td>$cat_title</td>
+                <td>$cat_desc</td>
+                <td>
+                    <a href='admin.php?edit_cat=$cat_id'>
+                        <i class='fa fa-pencil'></i> Edit Category
+                    </a>
+                </td>
+                <td>
+                    <a href='admin.php?delete_cat=$cat_id'>
+                        <i class='fa fa-trash-o'></i> Delete Category
+                    </a>
+                </td>
+            </tr>
+        ";
+    }
+}
+
+//Insert a category
+
+function insertCat(){
+    global $db;
+
+    if(isset($_POST['submit'])){
+        $cat_title = $_POST['cat_title'];
+        $cat_desc = $_POST['cat_desc'];
+
+        $insert = "INSERT INTO categories
+            (
+                cat_title,
+                cat_desc
+            )
+            VALUES
+            (
+                '$cat_title',
+                '$cat_desc'
+            )
+        ";
+        $run_insert = mysqli_query($db, $insert);
+
+        if($run_insert){
+            echo "
+                <script>
+                    alert('Category inserted successfully!');
+                    window.open('admin.php?view_cats', '_self');
+                </script>
+            ";
+        }else{
+            echo "
+                <script>
+                    alert('Category couldn't be inserted...');
+                </script>
+            ";
+        }
+    }
+}
+
+//Edit category
+
+function updateCat(){
+    global $db;
+    $edit_id = $_GET['edit_cat'];
+
+    if(isset($_POST['edit'])){
+        $cat_title = $_POST['cat_title'];
+        $cat_desc = $_POST['cat_desc'];
+
+        $update = "UPDATE categories SET
+            cat_title='$cat_title',
+            cat_desc='$cat_desc'
+            WHERE cat_id='$edit_id'
+        ";
+        $run_update = mysqli_query($db, $update);
+
+        if($run_update){
+            echo "
+                <script>
+                    alert('Updated category successfully!');
+                    window.open('admin.php?view_cats', '_self');
+                </script>
+            ";
+        }else{
+            echo "
+            <script>
+                alert('Couldn't update category...');
+            </script>
+        "; 
+        }
+    }
+}
+
 ?>
