@@ -1484,4 +1484,38 @@ function uploadSlide(){
     }
 }
 
+//Fetch customers to the admin panel
+
+function getCustomers(){
+    global $db;
+
+    $get_customers = "SELECT * FROM customers";
+    $run_customers = mysqli_query($db, $get_customers);
+
+    while($row_customers=mysqli_fetch_array($run_customers)){
+        $customer_id = $row_customers['customer_id'];
+        $customer_name = $row_customers['customer_name'];
+        $customer_email = $row_customers['customer_email'];
+        $customer_country = $row_customers['customer_country'];
+        $customer_city = $row_customers['customer_city'];
+        $customer_address = $row_customers['customer_address'];
+
+        echo "
+            <tr>
+                <td>$customer_id</td>
+                <td>$customer_name</td>
+                <td>$customer_email</td>
+                <td>$customer_country</td>
+                <td>$customer_city</td>
+                <td>$customer_address</td>
+                <td>
+                    <a href='admin.php?delete_customer=$customer_id'>
+                        <i class='fa fa-trash-o'></i> Delete Customer
+                    </a>
+                </td>
+            </tr>
+        ";
+    }
+}
+
 ?>
