@@ -1581,4 +1581,40 @@ function fetchOrders(){
     }
 }
 
+//Fetch payments to the admin panel
+
+function getPayments(){
+    global $db;
+
+    $get_payments = "SELECT * FROM payments";
+    $run_payments = mysqli_query($db, $get_payments);
+
+    while($row_payments=mysqli_fetch_array($run_payments)){
+        $payment_id = $row_payments['payment_id'];
+        $invoice_no = $row_payments['invoice_no'];
+        $amount = $row_payments['amount'];
+        $payment_mode = $row_payments['payment_mode'];
+        $ref_no = $row_payments['ref_no'];
+        $code = $row_payments['code'];
+        $payment_date = $row_payments['payment_date'];
+
+        echo "
+            <tr>
+                <td>$payment_id</td>
+                <td>$invoice_no</td>
+                <td>$amount</td>
+                <td>$payment_mode</td>
+                <td>$ref_no</td>
+                <td>$code</td>
+                <td>$payment_date</td>
+                <td>
+                    <a href='admin.php?delete_payment=$payment_id'>
+                        <i class='fa fa-trash-o'></i> Delete Payment
+                    </a>
+                </td>
+            </tr>
+        ";
+    }
+}
+
 ?>

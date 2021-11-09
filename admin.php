@@ -110,6 +110,12 @@ $count_p_orders = mysqli_num_rows($run_p_orders);
                 case isset($_GET['delete_order']):
                     include("admin_area/delete_order.php");
                     break;
+                case isset($_GET['view_payments']):
+                    include("admin_area/view_payments.php");
+                    break;
+                case isset($_GET['delete_payment']):
+                    include("admin_area/delete_payment.php");
+                    break;
             }
             
             ?>

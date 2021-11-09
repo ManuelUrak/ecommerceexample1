@@ -50,6 +50,9 @@
                     case isset($_GET['view_orders']):
                         echo "Dashboard / View Orders";
                         break;
+                    case isset($_GET['view_payments']):
+                        echo "Dashboard / View Payments";
+                        break;
                 }
                 
                 ?>
