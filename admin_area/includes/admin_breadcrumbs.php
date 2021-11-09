@@ -47,6 +47,9 @@
                     case isset($_GET['view_customers']):
                         echo "Dashboard / View Customers";
                         break;
+                    case isset($_GET['view_orders']):
+                        echo "Dashboard / View Orders";
+                        break;
                 }
                 
                 ?>

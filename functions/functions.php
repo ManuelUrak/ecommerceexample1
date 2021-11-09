@@ -1518,4 +1518,67 @@ function getCustomers(){
     }
 }
 
+//Fetch orders to the admin panel
+
+function fetchOrders(){
+    global $db;
+
+    $get_orders = "SELECT * FROM pending_orders";
+    $run_orders = mysqli_query($db, $get_orders);
+
+    while($row_orders=mysqli_fetch_array($run_orders)){
+        $order_id = $row_orders['order_id'];
+        $customer_id = $row_orders['customer_id'];
+        $invoice_no = $row_orders['invoice_no'];
+        $product_id = $row_orders['product_id'];
+        $qty = $row_orders['qty'];
+        $size = $row_orders['size'];
+        $order_status = $row_orders['order_status'];
+
+        $get_customer = "SELECT * FROM customers WHERE customer_id='$customer_id'";
+        $run_customer = mysqli_query($db, $get_customer);
+        $row_customer = mysqli_fetch_array($run_customer);
+
+        $customer_email = $row_customer['customer_email'];
+
+        $get_product = "SELECT * FROM products WHERE product_id='$product_id'";
+        $run_product = mysqli_query($db, $get_product);
+        $row_product = mysqli_fetch_array($run_product);
+
+        $product_name = $row_product['product_title'];
+
+        $get_order = "SELECT * FROM customer_orders WHERE order_id='$order_id'";
+        $run_order = mysqli_query($db, $get_order);
+        $row_order = mysqli_fetch_array($run_order);
+
+        $order_date = $row_order['order_date'];
+        $due_amount = $row_order['due_amount'];
+
+        if($order_status=='pending'){
+            $order_status = 'Pending';
+        }else{
+            $order_status = 'Complete';
+        }
+
+        echo "
+            <tr>
+                <td>$order_id</td>
+                <td>$customer_email</td>
+                <td>$invoice_no</td>
+                <td>$product_name</td>
+                <td>$qty</td>
+                <td>$size</td>
+                <td>$order_date</td>
+                <td>$due_amount</td>
+                <td>$order_status</td>
+                <td>
+                    <a href='admin.php?delete_order=$order_id'>
+                        <i class='fa fa-trash-o'></i> Delete Order
+                    </a>
+                </td>
+            </tr>
+        ";
+    }
+}
+
 ?>
