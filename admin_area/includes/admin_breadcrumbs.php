@@ -53,6 +53,12 @@
                     case isset($_GET['view_payments']):
                         echo "Dashboard / View Payments";
                         break;
+                    case isset($_GET['view_users']):
+                        echo "Dashboard / View Users";
+                        break;
+                    case isset($_GET['edit_users']):
+                        echo "Dashboard / Edit Users";
+                        break;
                 }
                 
                 ?>

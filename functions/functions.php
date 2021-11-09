@@ -1617,4 +1617,82 @@ function getPayments(){
     }
 }
 
+//Fetch admins from the database to the admin panel
+
+function getAdmins(){
+    global $db;
+
+    $get_admins = "SELECT * FROM admins";
+    $run_admins = mysqli_query($db, $get_admins);
+
+    while($row_admin=mysqli_fetch_array($run_admins)){
+        $admin_id = $row_admin['admin_id'];
+        $admin_name = $row_admin['admin_name'];
+        $admin_email = $row_admin['admin_email'];
+
+        echo "
+            <tr>
+                <td>$admin_id</td>
+                <td>$admin_name</td>
+                <td>$admin_email</td>
+                <td>
+                    <a href='admin.php?edit_users=$admin_id'>
+                        <i class='fa fa-pencil'></i> Edit User
+                    </a>
+                </td>
+                <td>
+                    <a href='admin.php?delete_user=$admin_id'>
+                        <i class='fa fa-trash-o'></i> Delete User
+                    </a>
+                </td>
+            </tr>
+        ";
+    }
+}
+
+//Edit admin account functionality
+
+function editAdmin(){
+    global $db;
+
+    if(isset($_POST['update'])){
+        $admin_id = $_GET['edit_users'];
+        $admin_name = $_POST['admin_name'];
+        $admin_email = $_POST['admin_email'];
+        $admin_pass = $_POST['new_pass'];
+        $confirm_pass = $_POST['new_pass_confirm'];
+
+        if($admin_pass==$confirm_pass){
+            $update = "UPDATE admins SET
+                admin_name='$admin_name',
+                admin_email='$admin_email',
+                admin_pass='$admin_pass'
+                WHERE admin_id='$admin_id'
+            ";
+            $run_update = mysqli_query($db, $update);
+
+            if($run_update){
+                echo "
+                    <script>
+                        alert('User edited successfully!');
+                        window.open('admin.php?view_users', '_self');
+                    </script>
+                ";
+            }else{
+                echo "
+                    <script>
+                        alert('Failed to save changes...');
+                    </script>
+                "; 
+            }
+        }else{
+            echo "
+                <script>
+                    alert('Passwords must match! Please try again...');
+                </script>
+            "; 
+        }
+    }
+}
+
 ?>

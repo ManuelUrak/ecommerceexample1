@@ -138,9 +138,6 @@
                     <li>
                         <a href="admin.php?view_users">View Users</a>
                     </li>
-                    <li>
-                        <a href="admin.php?edit_users">Edit Users</a>
-                    </li>
                 </ul>
             </li>
             <li>
