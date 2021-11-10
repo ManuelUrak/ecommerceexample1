@@ -120,10 +120,13 @@ $count_p_orders = mysqli_num_rows($run_p_orders);
                     include("admin_area/view_users.php");
                     break;
                 case isset($_GET['delete_user']):
-                    include("admin_area/delete_users.php");
+                    include("admin_area/delete_user.php");
                     break;
                 case isset($_GET['edit_users']):
                     include("admin_area/edit_users.php");
+                    break;
+                case isset($_GET['insert_user']):
+                    include("admin_area/insert_user.php");
                     break;
                 
             }

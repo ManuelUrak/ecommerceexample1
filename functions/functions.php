@@ -1695,4 +1695,55 @@ function editAdmin(){
     }
 }
 
+//Insert an admin into the database
+
+function insertAdmin(){
+    global $db;
+
+    if(isset($_POST['insert'])){
+        $admin_name = $_POST['admin_name'];
+        $admin_email = $_POST['admin_email'];
+        $admin_pass = $_POST['admin_pass'];
+        $confirm_pass = $_POST['confirm_pass'];
+
+        if($admin_pass==$confirm_pass){
+            $insert = "INSERT INTO admins
+                (
+                    admin_name,
+                    admin_email,
+                    admin_pass
+                )
+                VALUES
+                (
+                    '$admin_name',
+                    '$admin_email',
+                    '$admin_pass'
+                )
+            ";
+            $run_insert = mysqli_query($db, $insert);
+
+            if($run_insert){
+                echo "
+                    <script>
+                        alert('User inserted successfully!');
+                        window.open('admin.php?insert_user', '_self');
+                    </script>
+                ";
+            }else{
+                echo "
+                    <script>
+                        alert('Failed to insert user...');
+                    </script>
+                "; 
+            }
+        }else{
+            echo "
+                <script>
+                    alert('Passwords must match! Please try again!');
+                </script>
+            "; 
+        }
+    }
+}
+
 ?>

@@ -59,6 +59,9 @@
                     case isset($_GET['edit_users']):
                         echo "Dashboard / Edit Users";
                         break;
+                    case isset($_GET['insert_user']):
+                        echo "Dashboard / Insert User";
+                        break;
                 }
                 
                 ?>
